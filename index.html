@@ -36,7 +36,7 @@
             transform: translateY(0);
         }
         .taiji-symbol {
-            opacity: 0.04;
+            opacity: 0.05;
             position: absolute;
             pointer-events: none;
         }
@@ -53,11 +53,12 @@
     <header class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-teal-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" class="text-teal-800">
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M12 2C12 2 15 7 12 12C9 17 12 22 12 22" stroke="currentColor" stroke-width="1.5"/>
-                    <circle cx="12" cy="7" r="1" fill="currentColor"/>
-                    <circle cx="12" cy="17" r="1" fill="none" stroke="currentColor"/>
+                <!-- 更新された太極マーク（ロゴ） -->
+                <svg width="32" height="32" viewBox="0 0 100 100" class="text-teal-800">
+                    <circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/>
+                    <circle cx="50" cy="26" r="6" fill="white"/>
+                    <circle cx="50" cy="74" r="6" fill="currentColor"/>
                 </svg>
                 <span class="text-2xl font-black text-slate-800 tracking-tighter font-serif">太極拳 <span class="text-teal-700">晃水</span></span>
             </div>
@@ -73,8 +74,9 @@
 
     <!-- ヒーローセクション -->
     <section class="hero-gradient min-h-screen flex items-center pt-20 relative overflow-hidden">
-        <svg class="taiji-symbol -right-20 -top-20 w-1/2 h-1/2" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 4c4.42 0 8 3.58 8 8s-3.58 8-8 8V4z"/>
+        <!-- 背景の大きな太極マーク -->
+        <svg class="taiji-symbol -right-20 -top-20 w-1/2 h-1/2" viewBox="0 0 100 100" fill="currentColor">
+            <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2"/>
         </svg>
 
         <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
@@ -99,12 +101,13 @@
 
             <div class="relative">
                 <div class="rounded-[3rem] overflow-hidden shadow-2xl aspect-[4/5] bg-slate-200">
+                    <!-- トップページ メインビジュアル -->
                     <img src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/refs/heads/main/Generated%20Image%20October%2027%2C%202025%20-%209_16AM.png" 
                          alt="[太極拳 晃水のメインビジュアル]" 
                          class="w-full h-full object-cover image-reveal" 
                          onload="this.classList.add('loaded')">
                 </div>
-                <div class="absolute -bottom-8 -left-8 glass-card p-6 rounded-3xl shadow-xl hidden md:block">
+                <div class="absolute -bottom-8 -left-8 glass-card p-6 rounded-3xl shadow-xl hidden md:block border-l-4 border-teal-600">
                     <p class="font-serif text-teal-800 text-2xl font-black">静中動</p>
                     <p class="text-[10px] text-slate-400 font-bold tracking-[0.2em] mt-1 uppercase">Calm In Motion</p>
                 </div>
@@ -130,7 +133,6 @@
                     </p>
                 </div>
                 <div class="rounded-3xl overflow-hidden shadow-lg aspect-video bg-slate-100">
-                    <!-- 活動風景のイメージ -->
                     <img src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/refs/heads/main/nozawa01.jpg" 
                          alt="[太極拳のゆったりとした動作]" 
                          class="w-full h-full object-cover">
@@ -172,11 +174,18 @@
                          alt="[代表者 茂木佐代子 太極拳の演武]" 
                          class="w-full h-full object-cover image-reveal"
                          onload="this.classList.add('loaded')">
-                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/40 to-transparent"></div>
+                    <!-- 画像上のオーバーレイ太極マーク -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/60 to-transparent flex items-center justify-center">
+                         <svg width="120" height="120" viewBox="0 0 100 100" class="text-white/10">
+                            <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/>
+                            <circle cx="50" cy="26" r="6" fill="transparent" stroke="currentColor" stroke-width="1"/>
+                            <circle cx="50" cy="74" r="6" fill="currentColor"/>
+                        </svg>
+                    </div>
                 </div>
                 <div class="lg:w-1/2 p-12 lg:p-20 flex flex-col justify-center">
                     <p class="text-teal-400 font-bold tracking-[0.4em] mb-4 text-xs">代表者</p>
-                    <!-- スマホでの文字崩れを防ぐため text-3xl から text-2xl へ変更（レスポンシブ設定） -->
+                    <!-- スマートフォンでの表示を考慮したサイズ調整 -->
                     <h2 class="text-2xl md:text-5xl font-black mb-10 font-serif leading-tight">茂木 佐代子</h2>
                     <p class="text-xl font-bold text-teal-100 leading-relaxed mb-10 border-l-2 border-teal-500 pl-6">
                         「水が流れるようにしなやかに、清らかに生きたい。晃水という名前には、そんな願いを込めています。」
@@ -250,16 +259,18 @@
             </div>
             <p class="text-2xl font-serif text-slate-400 text-center">担当：茂木 佐代子</p>
         </div>
-        <div class="absolute top-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-[100px]"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-teal-500/10 rounded-full blur-[100px]"></div>
+        <!-- 装飾用太極マーク -->
+        <svg class="absolute -bottom-20 -left-20 w-80 h-80 text-white/5" viewBox="0 0 100 100" fill="currentColor">
+            <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2"/>
+        </svg>
     </section>
 
     <!-- フッター -->
     <footer class="py-20 bg-white border-t border-slate-100 text-center">
         <div class="flex items-center justify-center gap-2 mb-6">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-teal-800">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M12 2C12 2 15 7 12 12C9 17 12 22 12 22" stroke="currentColor" stroke-width="1.5"/>
+            <svg width="24" height="24" viewBox="0 0 100 100" class="text-teal-800">
+                <circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="4" fill="none"/>
+                <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/>
             </svg>
             <span class="text-2xl font-black text-slate-800 tracking-tighter font-serif">太極拳 <span class="text-teal-700">晃水</span></span>
         </div>
