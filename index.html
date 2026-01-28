@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太極拳 晃水（こうすい） | 長野県佐久市 創造館</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-green: #064e3b;
+            --brand-teal: #0d9488;
+            --soft-bg: #fdfdfb;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--soft-bg);
+            color: #334155;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #f0fdf4 0%, #e6fffa 100%);
+        }
+        .image-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+        }
+        .image-reveal.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .taiji-symbol {
+            opacity: 0.04;
+            position: absolute;
+            pointer-events: none;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(13, 148, 136, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ナビゲーション -->
+    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-teal-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" class="text-teal-800">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M12 2C12 2 15 7 12 12C9 17 12 22 12 22" stroke="currentColor" stroke-width="1.5"/>
+                    <circle cx="12" cy="7" r="1" fill="currentColor"/>
+                    <circle cx="12" cy="17" r="1" fill="none" stroke="currentColor"/>
+                </svg>
+                <span class="text-2xl font-black text-slate-800 tracking-tighter">太極拳 <span class="text-teal-700">晃水</span></span>
+            </div>
+            <nav class="hidden md:flex gap-8 text-sm font-bold text-slate-500 tracking-widest">
+                <a href="#about" class="hover:text-teal-700 transition-colors">想い</a>
+                <a href="#reasons" class="hover:text-teal-700 transition-colors">特徴</a>
+                <a href="#instructor" class="hover:text-teal-700 transition-colors">講師</a>
+                <a href="#info" class="hover:text-teal-700 transition-colors">案内</a>
+                <a href="tel:09077777777" class="bg-teal-700 text-white px-6 py-2 rounded-full hover:bg-teal-800 transition-all shadow-md">無料体験</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero-gradient min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <svg class="taiji-symbol -right-20 -top-20 w-1/2 h-1/2" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 4c4.42 0 8 3.58 8 8s-3.58 8-8 8V4z"/>
+        </svg>
+
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div>
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-teal-100 rounded-full text-teal-800 text-xs font-bold mb-8 shadow-sm">
+                    <span class="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></span>
+                    長野県佐久市 創造館にて活動
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black text-slate-900 leading-[1.2] mb-8 tracking-tight font-serif">
+                    水のように、<br><span class="text-teal-700 underline decoration-teal-200 underline-offset-8">しなやかに。</span>
+                </h1>
+                <p class="text-slate-600 text-lg md:text-xl font-medium mb-12 leading-relaxed max-w-xl">
+                    駒場公園の緑に包まれて、一生歩ける体づくりを。<br>
+                    土曜の朝、心と体がゆっくり整う。40代から70代の初心者が集う、和やかな太極拳クラブです。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a href="tel:09077777777" class="bg-teal-700 text-white font-black py-5 px-12 rounded-2xl text-xl text-center shadow-xl hover:bg-teal-800 transition-all transform hover:-translate-y-1">
+                        無料体験に申し込む
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="rounded-[3rem] overflow-hidden shadow-2xl aspect-[4/5] bg-slate-200">
+                    <!-- トップページ メインビジュアル -->
+                    <img src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/refs/heads/main/Generated%20Image%20October%2027%2C%202025%20-%209_16AM.png" 
+                         alt="[太極拳 晃水のメインビジュアル]" 
+                         class="w-full h-full object-cover image-reveal" 
+                         onload="this.classList.add('loaded')">
+                </div>
+                <div class="absolute -bottom-8 -left-8 glass-card p-6 rounded-3xl shadow-xl hidden md:block">
+                    <p class="font-serif text-teal-800 text-2xl font-black">静中動</p>
+                    <p class="text-[10px] text-slate-400 font-bold tracking-[0.2em] mt-1">CALM IN MOTION</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 私たちの想い -->
+    <section id="about" class="py-32 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl text-center">
+            <h2 class="text-3xl md:text-4xl font-black mb-16 font-serif">頑張りすぎない。比べない。<br>「太極拳 晃水」で、健やかな毎日を。</h2>
+            <div class="grid md:grid-cols-2 gap-16 items-center text-left">
+                <div class="space-y-6">
+                    <p class="text-lg leading-loose text-slate-600">
+                        「最近、運動不足が気になるけれど、激しい運動は自信がない……」<br>
+                        「健康診断の数値を見て、何か始めなきゃと思っている」
+                    </p>
+                    <p class="text-lg leading-loose text-slate-600">
+                        そんなお悩みはありませんか？佐久市の創造館で活動する「太極拳 晃水（こうすい）」は、無理なく、自分のペースで楽しめる場所です。
+                    </p>
+                    <p class="text-lg leading-loose text-slate-600">
+                        太極拳は「動く禅」とも呼ばれ、ゆったりとした円の動きで足腰を鍛え、深い呼吸で心をリラックスさせてくれます。
+                    </p>
+                </div>
+                <div class="rounded-3xl overflow-hidden shadow-lg aspect-video">
+                    <!-- サブ画像：練習風景のイメージ -->
+                    <img src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/refs/heads/main/nozawa01.jpg" 
+                         alt="[太極拳のゆったりとした手の動き]" 
+                         class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 選ばれる理由 -->
+    <section id="reasons" class="py-32 bg-teal-50/50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-black text-center mb-20 font-serif tracking-widest text-teal-900">太極拳 晃水 が選ばれる3つの理由</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center text-teal-700 text-3xl mb-8">①</div>
+                    <h3 class="text-xl font-black mb-4">初心者優先の<br>丁寧な指導</h3>
+                    <p class="text-slate-500 leading-relaxed">難しい専門用語は使いません。足の運び方や呼吸の仕方から、代表の茂木がゆっくりとお教えします。</p>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center text-teal-700 text-3xl mb-8">②</div>
+                    <h3 class="text-xl font-black mb-4">体力に合わせた<br>「無理のない」ペース</h3>
+                    <p class="text-slate-500 leading-relaxed">「体が硬い」という方も大丈夫。適宜休憩を挟みながら、その日の体調に合わせて動けます。膝や腰への配慮も欠かしません。</p>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-md transition-shadow border-2 border-teal-500/10">
+                    <div class="w-16 h-16 bg-teal-500 rounded-2xl flex items-center justify-center text-white text-3xl mb-8">③</div>
+                    <h3 class="text-xl font-black mb-4">心がほぐれる<br>和やかな交流</h3>
+                    <p class="text-slate-500 leading-relaxed">練習の前後には、笑顔の絶えない談笑タイムがあります。健康の相談から世間話まで、新しい仲間の繋がりが元気の源になります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 講師紹介 -->
+    <section id="instructor" class="py-32 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col lg:flex-row bg-slate-900 rounded-[4rem] text-white overflow-hidden shadow-2xl min-h-[550px]">
+                <div class="lg:w-1/2 relative bg-slate-800">
+                    <!-- 講師紹介画像（ヨガから太極拳の画像へ変更） -->
+                    <img src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/refs/heads/main/taikyokuken05.png" 
+                         alt="[代表 茂木佐代子 太極拳の演武]" 
+                         class="w-full h-full object-cover image-reveal"
+                         onload="this.classList.add('loaded')">
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/40 to-transparent"></div>
+                </div>
+                <div class="lg:w-1/2 p-12 lg:p-20 flex flex-col justify-center">
+                    <p class="text-teal-400 font-bold tracking-[0.4em] mb-4 text-xs uppercase">Representative</p>
+                    <h2 class="text-5xl font-black mb-10 font-serif">茂木 佐代子</h2>
+                    <p class="text-xl font-bold text-teal-100 leading-relaxed mb-10 border-l-2 border-teal-500 pl-6">
+                        「水が流れるようにしなやかに、清らかに生きたい。晃水という名前には、そんな願いを込めています。」
+                    </p>
+                    <p class="text-slate-300 leading-relaxed">
+                        佐久市で太極拳を広めて20余年。上手に演武することよりも、皆様が笑顔で『今日も楽しかった』と帰っていただける、温かいコミュニティを大切にしています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 案内・アクセス -->
+    <section id="info" class="py-32 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="text-4xl font-black text-center mb-20 font-serif underline decoration-teal-100 underline-offset-8">教室案内・アクセス</h2>
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div class="bg-slate-50 p-10 rounded-[3rem] border border-slate-100 shadow-sm">
+                    <ul class="space-y-8">
+                        <li class="flex items-start gap-6">
+                            <span class="w-14 h-14 bg-white shadow-sm rounded-2xl flex items-center justify-center text-2xl">📍</span>
+                            <div>
+                                <h4 class="font-bold text-teal-800 text-sm mb-1">場所</h4>
+                                <p class="text-xl font-black">佐久市 創造館</p>
+                                <p class="text-slate-500">駒場公園内（無料駐車場完備）</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-6">
+                            <span class="w-14 h-14 bg-white shadow-sm rounded-2xl flex items-center justify-center text-2xl">📅</span>
+                            <div>
+                                <h4 class="font-bold text-teal-800 text-sm mb-1">日時</h4>
+                                <p class="text-xl font-black">月3回 土曜日</p>
+                                <p class="text-slate-500">9:00 〜 11:00</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-6">
+                            <span class="w-14 h-14 bg-white shadow-sm rounded-2xl flex items-center justify-center text-2xl">👥</span>
+                            <div>
+                                <h4 class="font-bold text-teal-800 text-sm mb-1">対象</h4>
+                                <p class="text-xl font-black text-slate-800">40代から70代で初心者の方、大歓迎です。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="h-full min-h-[400px] rounded-[3rem] overflow-hidden shadow-xl">
+                    <iframe 
+                        class="w-full h-full min-h-[400px]"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3224.270928929944!2d138.48446451151676!3d36.257008772322625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601c2dbf1359e871%3A0x6b77274026603a11!2z5L2Q5LmF5biC5Ym16YCg6aSo!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp" 
+                        allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section class="py-32 bg-slate-900 text-white text-center relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl md:text-6xl font-black mb-16 font-serif tracking-tight leading-tight">
+                しなやかな人生を、<br>ここから。
+            </h2>
+            <p class="text-2xl md:text-3xl font-serif text-teal-400 mb-16">
+                太極拳で心と身体を健康に
+            </p>
+            <p class="text-teal-500 font-bold mb-4 tracking-[0.4em] text-xs uppercase">Contact & Trial</p>
+            <div class="mb-12">
+                <a href="tel:09077777777" class="text-5xl md:text-7xl font-black hover:text-teal-400 transition-colors">
+                    090-7777-7777
+                </a>
+            </div>
+            <p class="text-2xl font-serif text-slate-400">担当：茂木 佐代子</p>
+        </div>
+        <!-- 装飾 -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-teal-500/10 rounded-full blur-[100px]"></div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="py-20 bg-white border-t border-slate-100 text-center">
+        <div class="flex items-center justify-center gap-2 mb-6">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-teal-800">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 2C12 2 15 7 12 12C9 17 12 22 12 22" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <span class="text-2xl font-black text-slate-800 tracking-tighter font-serif">太極拳 <span class="text-teal-700">晃水</span></span>
+        </div>
+        <p class="text-[10px] font-bold text-slate-300 tracking-[0.5em] uppercase">© Tai Chi Club Kosui Saku-Nagano</p>
+    </footer>
+
+</body>
+</html>
