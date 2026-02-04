@@ -128,23 +128,17 @@
                     <p class="text-slate-600 text-lg font-medium mb-12 leading-relaxed max-w-xl mx-auto md:mx-0">
                         東御市 中央公民館にて毎週火曜日活動中。心身を整える太極拳で、穏やかな時間を過ごしませんか。
                     </p>
-                    <!-- ボタン：[講話を聴く(塗りつぶし)] [教室案内] [お問い合わせ] の順 -->
+                    <!-- ボタン配置：講話を聴く(塗りつぶし) / 教室案内 / お問い合わせ -->
                     <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
                         <a href="#talk" class="bg-teal-700 text-white font-black py-4 px-10 rounded-2xl shadow-lg hover:bg-teal-800 transition-all text-center text-lg">講話を聴く</a>
                         <a href="#info" class="bg-white text-teal-800 font-bold py-4 px-10 rounded-2xl border border-teal-100 shadow-sm hover:bg-teal-50 text-center">教室案内を見る</a>
                         <a href="#contact" class="bg-white text-teal-800 font-bold py-4 px-10 rounded-2xl border border-teal-100 shadow-sm hover:bg-teal-50 text-center">お問い合わせ</a>
                     </div>
                 </div>
+                <!-- トップページ画像 -->
                 <div class="hidden lg:block text-center">
-                    <div class="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-6 border border-teal-50 inline-block">
-                        <!-- イラストエリア -->
-                        <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto max-w-[280px]">
-                            <rect width="400" height="300" rx="40" fill="#f0fdf4"/>
-                            <circle cx="320" cy="80" r="40" fill="#fef3c7" fill-opacity="0.5"/>
-                            <path d="M50 250C100 220 150 260 200 230C250 200 300 240 350 210V300H50V250Z" fill="#dcfce7"/>
-                            <path d="M200 120C200 100 220 100 220 120V140C220 160 200 160 200 140V120Z" fill="#92400e"/>
-                            <path d="M195 120C195 110 225 110 225 120L220 105L200 105L195 120Z" fill="#78350f"/>
-                        </svg>
+                    <div class="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-2 border border-teal-50 inline-block">
+                        <img src="https://github.com/yoshi0213saku-spec/my-images/blob/main/taichi_top02.png?raw=true" alt="[太極拳どんぐりの会 トップ画像]" class="w-full h-auto rounded-[2.8rem] max-w-[450px] transition-transform hover:scale-105 duration-700">
                     </div>
                 </div>
             </div>
@@ -166,9 +160,11 @@
                             太極拳は人と競うものではありません。ゆったりとした円の動きで足腰を鍛え、深い呼吸で心をリラックスさせてくれます。
                         </p>
                     </div>
-                    <div class="rounded-3xl overflow-hidden shadow-lg aspect-video bg-teal-50 flex items-center justify-center p-8 text-teal-800 font-serif text-2xl text-center leading-relaxed reveal active">
-                        <!-- 画像修正の際はこちらのimgタグを追加または変更してください -->
-                        心と身体を緩める、<br>静かなひととき。
+                    <!-- セクション画像：taichi_11.png を埋め込み -->
+                    <div class="reveal active">
+                        <div class="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
+                            <img src="https://github.com/yoshi0213saku-spec/my-images/blob/main/taichi_11.png?raw=true" alt="[太極拳の稽古風景]" class="w-full h-auto object-cover transition-transform hover:scale-105 duration-700">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -207,7 +203,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Googleマップ -->
                     <div class="rounded-[3rem] overflow-hidden shadow-xl reveal active border border-slate-100 min-h-[400px]">
                         <iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3215.1584992524317!2d138.3371665!3d36.3533895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601d93962e737c69%3A0xc078170068832a87!2z5p2x5b6h5biC5Lit5aSu5YWs5rCR6aSo!5e0!3m2!1sja!2sjp!4v1715650000000!5m2!1sja!2sjp" allowfullscreen="" loading="lazy"></iframe>
                     </div>
@@ -241,11 +236,11 @@
             <div class="container mx-auto px-6 max-w-4xl relative z-10">
                 <h2 class="text-3xl md:text-5xl font-black mb-8 font-serif reveal active italic leading-tight text-slate-800">お問い合わせ・お申し込み</h2>
                 <div class="w-16 h-1 bg-teal-500 mx-auto mb-10"></div>
-                <p class="text-slate-500 mb-16 reveal active italic text-sm tracking-widest leading-loose font-serif">
+                <p class="text-slate-500 mb-16 reveal active italic text-sm tracking-widest leading-loose font-serif text-center">
                     無料体験の予約や、教室に関するご相談など、お気軽にお問い合わせください。
                 </p>
                 
-                <div class="grid md:grid-cols-2 gap-8 reveal active">
+                <div class="grid md:grid-cols-2 gap-8 reveal active text-center">
                     <!-- メールボタン -->
                     <a href="mailto:yoshi0213.saku@gmail.com?subject=太極拳どんぐりの会：お問い合わせ&body=【お名前】%0D%0A%0D%0A【お問い合わせ内容】%0D%0A太極拳の無料体験を希望します。" 
                        class="bg-slate-50 text-teal-900 p-10 rounded-[3rem] shadow-xl hover:scale-105 transition-transform group flex flex-col items-center border border-slate-100">
@@ -297,7 +292,7 @@
                     </div>
                 </div>
 
-                <!-- アーカイブ一覧 (日付形式: 〇〇年〇月) -->
+                <!-- アーカイブ一覧 -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal active">
                     <!-- 2025年12月 -->
                     <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
@@ -362,7 +357,7 @@
             </svg>
             <span class="text-xl font-black font-serif uppercase tracking-widest">Tai Chi <span class="text-teal-700">Donguri</span></span>
         </div>
-        <p class="mt-4 text-[10px] tracking-widest opacity-50 uppercase">© Tai Chi Club Donguri-no-kai - Tomi-City</p>
+        <p class="mt-4 text-[10px] tracking-widest opacity-50 uppercase text-slate-400">© Tai Chi Club Donguri-no-kai - Tomi-City</p>
     </footer>
 
     <script>
