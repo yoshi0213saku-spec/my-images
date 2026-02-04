@@ -122,7 +122,7 @@
     <section class="hero-gradient min-h-screen flex items-center pt-24 relative overflow-hidden">
         <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 text-center md:text-left">
             <div class="reveal active">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-teal-100 rounded-full text-teal-800 text-xs font-bold mb-8 shadow-sm">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-teal-100 rounded-full text-teal-800 text-xs font-bold mb-8 shadow-sm mx-auto md:mx-0">
                     <span class="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></span>
                     長野県東御市 中央公民館にて活動中
                 </div>
@@ -172,11 +172,8 @@
                         太極拳は人と競うものではありません。ゆったりとした円の動きで足腰を鍛え、深い呼吸で心をリラックスさせてくれます。
                     </p>
                 </div>
-                <div class="rounded-3xl overflow-hidden shadow-lg aspect-video bg-slate-100 reveal">
-                    <!-- 代替画像 -->
-                    <div class="w-full h-full bg-teal-50 flex items-center justify-center p-8 text-teal-800 font-serif text-2xl text-center leading-relaxed">
-                        心と身体を緩める、<br>静かなひととき。
-                    </div>
+                <div class="rounded-3xl overflow-hidden shadow-lg aspect-video bg-teal-50 flex items-center justify-center p-8 text-teal-800 font-serif text-2xl text-center leading-relaxed reveal">
+                    心と身体を緩める、<br>静かなひととき。
                 </div>
             </div>
         </div>
@@ -247,16 +244,16 @@
         </div>
     </section>
 
-    <!-- 講話ライブラリ (音声修正版) -->
+    <!-- 講話ライブラリ -->
     <section id="talk" class="py-32 bg-teal-50/30 border-t border-teal-100 relative">
         <div class="container mx-auto px-6 max-w-6xl relative z-10">
             <div class="text-center mb-24 reveal">
                 <span class="text-xs font-bold text-teal-700 tracking-[0.4em] uppercase">Audio Library</span>
                 <h2 class="text-3xl md:text-5xl font-black mt-4 font-serif text-slate-900">佐藤先生、太極拳を語る</h2>
                 <div class="w-16 h-1 bg-teal-600 mx-auto mt-6"></div>
-                <p class="mt-8 text-slate-500 text-sm italic italic tracking-widest leading-loose">
+                <p class="mt-8 text-slate-500 text-sm italic italic tracking-widest leading-loose mx-auto max-w-2xl">
                     稽古の最後にお話しする、太極拳の教え。<br>
-                    GitHubリポジトリから直接音声を読み込んでいます。
+                    各アーカイブの内容を簡単にまとめています。どうぞお聴きください。
                 </p>
             </div>
 
@@ -272,29 +269,30 @@
                         <p class="text-sm font-bold opacity-80">2026</p>
                     </div>
                     <div class="flex-grow relative z-10">
-                        <h3 class="text-2xl md:text-3xl font-black mb-6 font-serif text-slate-900 leading-tight italic decoration-teal-500/20 underline underline-offset-8 italic">
+                        <h3 class="text-2xl md:text-3xl font-black mb-6 font-serif text-slate-900 leading-tight italic decoration-teal-500/20 underline underline-offset-8">
                             馬長勲先生の本にも。<br class="hidden md:block">真の太極拳とは。
                         </h3>
                         <p class="text-slate-600 mb-10 leading-relaxed text-lg font-medium">
-                            「本当の太極拳は練習し終わるととても気持ちが良い」。馬長勲（ばちょうくん）先生の言葉を引用しながら、力を使わず、気持ちのよい緩みについて。
+                            「本当の太極拳は練習し終わるととても気持ちが良い」。馬長勲（ばちょうくん）先生の言葉を引用しながら、力を使わず、姿勢を低くしすぎない「気持ちのよい緩み」について。
                         </p>
                         <div class="bg-teal-50/50 rounded-[2.5rem] p-6 border border-white shadow-inner">
                             <audio controls class="w-full">
-                                <source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/2026%E5%B9%B42%E6%9C%88%20%E9%A6%AC%E9%95%B7%E5%8B%B2%E5%85%88%E7%94%9F%E3%81%AE%E6%9C%AC%E3%81%AB%E3%82%82.mp3" type="audio/mpeg">
+                                <source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202602.mp3" type="audio/mpeg">
                             </audio>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- アーカイブ一覧 (GitHub直接リンク版) -->
+            <!-- アーカイブ一覧 (計7本) -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
                 
                 <!-- 2025年12月 -->
                 <div class="talk-card bg-white p-10 rounded-[3rem] shadow-sm flex flex-col justify-between">
                     <div>
                         <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full tracking-widest uppercase mb-6 inline-block tracking-tighter italic">Dec 2025</span>
-                        <h4 class="font-black font-serif text-slate-800 text-xl mb-8 italic leading-relaxed">太極拳のお話<br><small class="text-slate-400 font-sans tracking-normal font-normal tracking-tighter italic">（2025年12月）</small></h4>
+                        <h4 class="font-black font-serif text-slate-800 text-xl mb-4 italic leading-relaxed">太極拳のお話</h4>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed">一年の締めくくり。冬の寒さの中で身体を芯から温める養生と、内面の静けさを保つコツについてお話しします。</p>
                     </div>
                     <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202512.mp3" type="audio/mpeg"></audio>
                 </div>
@@ -303,7 +301,8 @@
                 <div class="talk-card bg-white p-10 rounded-[3rem] shadow-sm flex flex-col justify-between">
                     <div>
                         <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full tracking-widest uppercase mb-6 inline-block tracking-tighter italic">Oct 2025</span>
-                        <h4 class="font-black font-serif text-slate-800 text-xl mb-8 italic leading-relaxed">太極拳のお話<br><small class="text-slate-400 font-sans tracking-normal font-normal tracking-tighter italic">（2025年10月）</small></h4>
+                        <h4 class="font-black font-serif text-slate-800 text-xl mb-4 italic leading-relaxed">太極拳のお話</h4>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed">秋の深まりとともに。深い呼吸を取り入れ、一つひとつの動作を丁寧につなげることで得られる充実感について。</p>
                     </div>
                     <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202510.mp3" type="audio/mpeg"></audio>
                 </div>
@@ -312,7 +311,8 @@
                 <div class="talk-card bg-white p-10 rounded-[3rem] shadow-sm flex flex-col justify-between">
                     <div>
                         <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full tracking-widest uppercase mb-6 inline-block tracking-tighter italic">Aug 2025</span>
-                        <h4 class="font-black font-serif text-slate-800 text-xl mb-8 italic leading-relaxed">太極拳のお話<br><small class="text-slate-400 font-sans tracking-normal font-normal tracking-tighter italic">（2025年08月）</small></h4>
+                        <h4 class="font-black font-serif text-slate-800 text-xl mb-4 italic leading-relaxed">太極拳のお話</h4>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed">夏の稽古。暑さの中でも心を穏やかに保ち、水の流れのように途切れないしなやかな動きを目指す大切さについて。</p>
                     </div>
                     <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202508.mp3" type="audio/mpeg"></audio>
                 </div>
@@ -321,7 +321,8 @@
                 <div class="talk-card bg-white p-10 rounded-[3rem] shadow-sm flex flex-col justify-between">
                     <div>
                         <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full tracking-widest uppercase mb-6 inline-block tracking-tighter italic">Jun 2025</span>
-                        <h4 class="font-black font-serif text-slate-800 text-xl mb-8 italic leading-relaxed">太極拳のお話<br><small class="text-slate-400 font-sans tracking-normal font-normal tracking-tighter italic">（2025年06月）</small></h4>
+                        <h4 class="font-black font-serif text-slate-800 text-xl mb-4 italic leading-relaxed">太極拳のお話</h4>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed">梅雨の時期の身体の整え方。関節の強張りをほぐし、気の巡りを良くするための「緩み」のアプローチ。</p>
                     </div>
                     <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202506.mp3" type="audio/mpeg"></audio>
                 </div>
@@ -330,7 +331,8 @@
                 <div class="talk-card bg-white p-10 rounded-[3rem] shadow-sm flex flex-col justify-between">
                     <div>
                         <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full tracking-widest uppercase mb-4 inline-block tracking-tighter italic">Apr 2025</span>
-                        <h4 class="font-black font-serif text-slate-800 text-xl mb-8 italic leading-relaxed">太極拳のお話<br><small class="text-slate-400 font-sans tracking-normal font-normal tracking-tighter italic">（2025年04月）</small></h4>
+                        <h4 class="font-black font-serif text-slate-800 text-xl mb-4 italic leading-relaxed">太極拳のお話</h4>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed">新しい始まりの季節。太極拳の基本姿勢に立ち返り、背筋を伸ばして新しい一歩を踏み出す心構えについて。</p>
                     </div>
                     <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202504.mp3" type="audio/mpeg"></audio>
                 </div>
@@ -339,7 +341,8 @@
                 <div class="talk-card bg-white p-10 rounded-[3rem] shadow-sm flex flex-col justify-between">
                     <div>
                         <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full tracking-widest uppercase mb-6 inline-block tracking-tighter italic">Feb 2025</span>
-                        <h4 class="font-black font-serif text-slate-800 text-xl mb-8 italic leading-relaxed">太極拳のお話<br><small class="text-slate-400 font-sans tracking-normal font-normal tracking-tighter italic">（2025年02月）</small></h4>
+                        <h4 class="font-black font-serif text-slate-800 text-xl mb-4 italic leading-relaxed">太極拳のお話</h4>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed">立春の頃。厳しい寒さの中でも、重心を安定させて丹田（たんでん）に力を蓄える、冬の太極拳の極意について。</p>
                     </div>
                     <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202502.mp3" type="audio/mpeg"></audio>
                 </div>
@@ -348,7 +351,8 @@
                 <div class="talk-card bg-white p-10 rounded-[3rem] shadow-sm flex flex-col justify-between">
                     <div>
                         <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full tracking-widest uppercase mb-6 inline-block tracking-tighter italic">Dec 2024</span>
-                        <h4 class="font-black font-serif text-slate-800 text-xl mb-8 italic leading-relaxed">太極拳のお話<br><small class="text-slate-400 font-sans tracking-normal font-normal tracking-tighter italic">（2024年12月）</small></h4>
+                        <h4 class="font-black font-serif text-slate-800 text-xl mb-4 italic leading-relaxed">太極拳のお話</h4>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed">どんぐりの会の始まりの心。太極拳への感謝と、一歩ずつゆっくりと継続していくことの本当の価値を語ります。</p>
                     </div>
                     <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202412.mp3" type="audio/mpeg"></audio>
                 </div>
