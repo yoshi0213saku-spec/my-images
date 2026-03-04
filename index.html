@@ -20,54 +20,33 @@
             color: #334155;
             overflow-x: hidden;
         }
-        h1, h2, h3, h4, .font-serif {
-            font-family: 'Noto Serif JP', serif;
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #f0fdf4 0%, #e6fffa 100%);
-        }
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1.2s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out;
-            transform: translateX(100%);
-        }
-        #mobile-menu.open {
-            transform: translateX(0);
-        }
-        audio {
-            width: 100%;
-            height: 40px;
-            filter: sepia(10%) grayscale(1);
-            border-radius: 99px;
-        }
+        h1, h2, h3, h4, .font-serif { font-family: 'Noto Serif JP', serif; }
+        .hero-gradient { background: linear-gradient(135deg, #f0fdf4 0%, #e6fffa 100%); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        audio { width: 100%; height: 32px; border-radius: 99px; }
         .talk-card {
             transition: all 0.3s ease;
             border: 1px solid #f1f5f9;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
         }
-        .talk-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05);
-            border-color: #0d9488;
-        }
-        .illustration-bg {
-            background-image: radial-gradient(#0d9488 0.5px, transparent 0.5px);
-            background-size: 20px 20px;
-            opacity: 0.1;
-        }
+        .talk-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px rgb(0 0 0 / 0.1); border-color: var(--brand-teal); }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+        .status-loading { background-color: #fbbf24; }
+        .status-ok { background-color: #10b981; }
+        .status-error { background-color: #ef4444; }
+        .status-text { font-size: 10px; font-weight: bold; }
     </style>
 </head>
-<body id="top" class="antialiased">
+<body id="top" class="antialiased selection:bg-teal-100 selection:text-teal-900">
 
-    <!-- ナビゲーション -->
-    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-teal-50">
+    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-lg border-b border-teal-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#top" class="flex items-center gap-3 group">
                 <svg width="32" height="32" viewBox="0 0 100 100" class="text-teal-800 transition-transform group-hover:rotate-180 duration-1000">
@@ -76,388 +55,287 @@
                     <circle cx="50" cy="26" r="6" fill="white"/>
                     <circle cx="50" cy="74" r="6" fill="currentColor"/>
                 </svg>
-                <span class="text-2xl font-black text-slate-800 tracking-tighter font-serif uppercase">太極拳 <span class="text-teal-700">どんぐりの会</span></span>
+                <span class="text-xl md:text-2xl font-black text-slate-800 tracking-tighter font-serif text-teal-800">太極拳 どんぐりの会</span>
             </a>
-
-            <nav class="hidden md:flex items-center gap-8 text-sm font-bold text-slate-500 tracking-widest uppercase">
-                <a href="#about" class="hover:text-teal-700 transition-colors text-xs">私たちの想い</a>
-                <a href="#info" class="hover:text-teal-700 transition-colors text-xs">教室案内</a>
-                <a href="#contact" class="hover:text-teal-700 transition-colors text-xs font-bold">お問い合わせ</a>
-                <a href="#talk" class="bg-teal-700 text-white px-6 py-2 rounded-full hover:bg-teal-800 transition-all shadow-md text-xs tracking-tighter">佐藤先生『太極拳を語る』</a>
+            <nav class="hidden md:flex items-center gap-6 text-xs font-bold text-slate-500 tracking-widest uppercase">
+                <a href="#about" class="hover:text-teal-700 transition-colors">想い</a>
+                <a href="#talk" class="hover:text-teal-700 transition-colors">講話集</a>
+                <a href="https://yoshi0213saku.wixsite.com/my-site-2" target="_blank" class="bg-teal-700 text-white px-5 py-2 rounded-full hover:bg-teal-800 shadow-lg shadow-teal-700/20 transition-all">公式サイト(Wix)</a>
             </nav>
-
-            <button id="menu-btn" class="md:hidden text-slate-800 focus:outline-none p-2">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-            </button>
         </div>
     </header>
 
-    <!-- モバイルメニュー -->
-    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-teal-900 text-white p-8 md:hidden text-center">
-        <div class="flex justify-end">
-            <button id="close-btn" class="p-2">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-        </div>
-        <nav class="flex flex-col items-center gap-8 mt-12 text-2xl font-serif">
-            <a href="#top" class="mobile-link">トップページ</a>
-            <a href="#about" class="mobile-link">私たちの想い</a>
-            <a href="#info" class="mobile-link">教室案内</a>
-            <a href="#contact" class="mobile-link">お問い合わせ</a>
-            <a href="#talk" class="mt-8 bg-white text-teal-900 px-10 py-4 rounded-full font-bold mobile-link">佐藤先生『太極拳を語る』</a>
-        </nav>
-    </div>
-
     <main>
-        <!-- ヒーローセクション -->
-        <section class="hero-gradient min-h-[75vh] flex items-center pt-24 relative overflow-hidden">
-            <div class="container mx-auto px-6 text-center md:text-left grid lg:grid-cols-2 gap-12 items-center relative z-10">
+        <section class="hero-gradient min-h-[50vh] flex items-center pt-24">
+            <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
                 <div class="reveal active">
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-teal-100 rounded-full text-teal-800 text-xs font-bold mb-8 shadow-sm mx-auto md:mx-0">
-                        <span class="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></span>
-                        2026年2月 更新
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/60 border border-teal-100 rounded-full text-teal-800 text-[11px] font-bold mb-6 shadow-sm">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+                        </span>
+                        全講話アーカイブ 完成
                     </div>
-                    <h1 class="text-4xl md:text-6xl font-black text-slate-900 leading-[1.2] mb-8 tracking-tight font-serif">
-                        しなやかに、自分を。<br><span class="text-teal-700 underline decoration-teal-200 underline-offset-8">整えて、笑う。</span>
+                    <h1 class="text-4xl md:text-6xl font-black text-slate-900 leading-tight mb-8 font-serif">
+                        しなやかに整えて、<br><span class="text-teal-700 italic">心から笑う。</span>
                     </h1>
-                    <p class="text-slate-600 text-lg font-medium mb-12 leading-relaxed max-w-xl mx-auto md:mx-0">
-                        東御市 中央公民館にて毎週火曜日活動中。心身を整える太極拳で、穏やかな時間を過ごしませんか。
+                    <p class="text-slate-600 text-lg mb-10 leading-relaxed max-w-lg">
+                        佐藤光代先生による全14回の貴重な記録。最新の2026年2月分からアーカイブまで、全ての講話が再生可能です。
                     </p>
-                    <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                        <a href="#talk" class="bg-teal-700 text-white font-black py-4 px-10 rounded-2xl shadow-lg hover:bg-teal-800 transition-all text-center text-lg">講話を聴く</a>
-                        <a href="#info" class="bg-white text-teal-800 font-bold py-4 px-10 rounded-2xl border border-teal-100 shadow-sm hover:bg-teal-50 text-center">教室案内を見る</a>
-                        <a href="#contact" class="bg-white text-teal-800 font-bold py-4 px-10 rounded-2xl border border-teal-100 shadow-sm hover:bg-teal-50 text-center">お問い合わせ</a>
+                    <div class="flex gap-4">
+                        <a href="#talk" class="bg-teal-700 text-white font-bold py-4 px-8 rounded-2xl shadow-xl shadow-teal-700/20 hover:bg-teal-800 transition-all">講話をすべて聴く</a>
                     </div>
                 </div>
-                <div class="hidden lg:block text-center">
-                    <div class="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-2 border border-teal-50 inline-block">
-                        <img src="https://github.com/yoshi0213saku-spec/my-images/blob/main/taichi_top02.png?raw=true" alt="[太極拳どんぐりの会 トップ画像]" class="w-full h-auto rounded-[2.8rem] max-w-[450px] transition-transform hover:scale-105 duration-700">
-                    </div>
+                <div class="hidden lg:block relative">
+                    <img src="https://github.com/yoshi0213saku-spec/my-images/blob/main/taichi_top02.png?raw=true" alt="[太極拳練習風景]" class="rounded-[3rem] shadow-2xl border-4 border-white">
                 </div>
             </div>
         </section>
 
-        <!-- セクション1：私たちの想い -->
-        <section id="about" class="py-32 bg-white relative overflow-hidden">
-            <div class="illustration-bg absolute inset-0"></div>
-            <div class="container mx-auto px-6 max-w-5xl text-center relative z-10">
-                <h2 class="text-3xl md:text-4xl font-black mb-16 font-serif text-slate-800 reveal active">
-                    頑張りすぎない。比べない。<br>「どんぐりの会」で、健やかな毎日を。
-                </h2>
-                <div class="grid md:grid-cols-2 gap-16 items-center text-left">
-                    <div class="space-y-6 reveal active">
-                        <p class="text-lg leading-loose text-slate-600">
-                            「どんぐりの会」という名前には、小さなどんぐりがいつか大きな木に育つように、皆様の健康が大きく健やかに育ってほしいという願いを込めています。
-                        </p>
-                        <p class="text-lg leading-loose text-slate-600">
-                            太極拳は人と競うものではありません。ゆったりとした円の動きで足腰を鍛え、深い呼吸で心をリラックスさせてくれます。
-                        </p>
-                    </div>
-                    <div class="reveal active">
-                        <div class="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
-                            <img src="https://github.com/yoshi0213saku-spec/my-images/blob/main/taichi_11.png?raw=true" alt="[太極拳の稽古風景]" class="w-full h-auto object-cover transition-transform hover:scale-105 duration-700">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- セクション2：教室案内 -->
-        <section id="info" class="py-24 bg-slate-50 border-y border-teal-50">
+        <!-- 講話アーカイブ -->
+        <section id="talk" class="py-24 bg-teal-50/20">
             <div class="container mx-auto px-6 max-w-6xl">
-                <h2 class="text-3xl md:text-4xl font-black text-center mb-20 font-serif text-slate-900 underline decoration-teal-100 underline-offset-8 leading-tight">教室案内・アクセス</h2>
-                <div class="grid lg:grid-cols-2 gap-12 items-stretch">
-                    <div class="bg-white p-10 md:p-14 rounded-[3rem] border border-slate-100 shadow-sm reveal active flex flex-col justify-center text-slate-800">
-                        <div class="space-y-12">
-                            <div class="flex items-start gap-8">
-                                <span class="text-3xl">📍</span>
-                                <div>
-                                    <h4 class="text-[10px] font-bold text-teal-600 uppercase tracking-widest mb-1 font-sans">会場</h4>
-                                    <p class="text-2xl font-black italic">東御市 中央公民館</p>
-                                    <p class="text-slate-500 text-sm mt-1">長野県東御市県282-2（市役所となり）</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-8">
-                                <span class="text-3xl">📅</span>
-                                <div>
-                                    <h4 class="text-[10px] font-bold text-teal-600 uppercase tracking-widest mb-1 font-sans">活動日</h4>
-                                    <p class="text-2xl font-black italic text-teal-900">毎週火曜日</p>
-                                    <p class="text-slate-500 text-sm mt-1">午後 1:30 〜 3:30</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-8">
-                                <span class="text-3xl">🪙</span>
-                                <div>
-                                    <h4 class="text-[10px] font-bold text-teal-600 uppercase tracking-widest mb-1 font-sans">会費</h4>
-                                    <p class="text-2xl font-black italic text-teal-900">月額 2,000円</p>
-                                    <p class="text-slate-500 text-sm mt-1 italic font-serif">見学・初回無料体験はいつでも歓迎です。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rounded-[3rem] overflow-hidden shadow-xl reveal active border border-slate-100 h-[350px] lg:h-auto min-h-[450px]">
-                        <iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3215.1612443048924!2d138.33716647669453!3d36.35332257237845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601d939634e9e05d%3A0xc078170068832a87!2z5p2x5b6h5biC5Lit5aSu5YWs5rCR6aSo!5e0!3m2!1sja!2sjp!4v1710000000000!5m2!1sja!2sjp" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- セクション3：講師紹介 -->
-        <section id="instructor" class="py-24 bg-slate-900 text-white overflow-hidden">
-            <div class="container mx-auto px-6 max-w-5xl text-center lg:text-left">
-                <div class="flex flex-col lg:flex-row items-center gap-16 reveal active">
-                    <div class="lg:w-1/3">
-                        <img src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/refs/heads/main/yamatokawa01.png" alt="[佐藤光代 講師]" class="w-full rounded-[3rem] shadow-2xl opacity-90 transition-transform hover:scale-105 duration-700">
-                    </div>
-                    <div class="lg:w-2/3">
-                        <p class="text-teal-400 font-bold tracking-[0.4em] mb-4 text-xs uppercase italic tracking-widest">Instructor</p>
-                        <h2 class="text-4xl md:text-5xl font-black mb-8 font-serif leading-tight text-white">佐藤 光代</h2>
-                        <p class="text-xl font-bold text-teal-100 leading-relaxed mb-10 border-l-2 border-teal-500 pl-6 italic font-serif">
-                            「太極拳を通じて、皆様の毎日がより豊かに、健やかになるお手伝いをいたします。」
-                        </p>
-                        <p class="text-slate-400 leading-relaxed text-sm italic font-sans">
-                            東御市を中心に指導しています。心と体の「緩み」を大切に、無理のない健康づくりを提案しています。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- セクション4：お問い合わせ -->
-        <section id="contact" class="py-32 bg-white text-slate-900 text-center relative overflow-hidden">
-            <div class="container mx-auto px-6 max-w-4xl relative z-10">
-                <h2 class="text-3xl md:text-5xl font-black mb-8 font-serif reveal active italic leading-tight text-slate-800">お問い合わせ・お申し込み</h2>
-                <div class="w-16 h-1 bg-teal-500 mx-auto mb-10"></div>
-                <p class="text-slate-500 mb-16 reveal active italic text-sm tracking-widest leading-loose font-serif text-center">
-                    無料体験の予約や、教室に関するご相談など、お気軽にお問い合わせください。
-                </p>
-                
-                <div class="grid md:grid-cols-2 gap-8 reveal active text-center">
-                    <a href="mailto:yoshi0213.saku@gmail.com?subject=太極拳どんぐりの会：お問い合わせ&body=【お名前】%0D%0A%0D%0A【お問い合わせ内容】%0D%0A太極拳の無料体験を希望します。" 
-                       class="bg-slate-50 text-teal-900 p-10 rounded-[3rem] shadow-xl hover:scale-105 transition-transform group flex flex-col items-center border border-slate-100">
-                        <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-teal-700 text-3xl mb-6 shadow-inner">✉️</div>
-                        <h3 class="text-2xl font-black mb-2 font-serif">メールで相談</h3>
-                        <p class="text-slate-500 text-xs mb-8">24時間受け付けております</p>
-                        <span class="bg-teal-700 text-white px-10 py-4 rounded-full font-black group-hover:bg-teal-800 transition-colors shadow-lg">メールを作成する</span>
-                    </a>
-
-                    <a href="sms:09026281219?&body=太極拳どんぐりの会の体験について相談したいです。" 
-                       class="bg-teal-800 text-white p-10 rounded-[3rem] shadow-xl hover:scale-105 transition-transform group flex flex-col items-center">
-                        <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-white text-3xl mb-6 shadow-inner">📱</div>
-                        <h3 class="text-2xl font-black mb-2 font-serif">ショートメール</h3>
-                        <p class="text-teal-200 text-xs mb-8">お急ぎの方はこちらへ</p>
-                        <span class="bg-white text-teal-900 px-10 py-4 rounded-full font-black group-hover:bg-teal-50 transition-colors shadow-lg">メッセージを送る</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- セクション5：佐藤先生『太極拳を語る』（最終セクション） -->
-        <section id="talk" class="py-24 bg-teal-50/20 border-t border-teal-100">
-            <div class="container mx-auto px-6 max-w-6xl">
-                <div class="text-center mb-16 reveal active">
-                    <span class="text-xs font-bold text-teal-700 tracking-[0.4em] uppercase">Audio Library</span>
-                    <h2 class="text-3xl md:text-5xl font-black mt-4 font-serif text-slate-900 leading-tight">佐藤先生『太極拳を語る』</h2>
-                    <div class="w-16 h-1 bg-teal-600 mx-auto mt-6"></div>
-                    <p class="mt-8 text-slate-500 text-sm italic font-serif leading-loose">稽古の最後に先生がお話しする、太極拳の教えをまとめたライブラリです。</p>
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-5xl font-black font-serif text-slate-900 mb-6 italic text-teal-800">太極拳を語る（全14回）</h2>
+                    <p class="text-slate-500 font-serif tracking-widest text-sm bg-white p-4 rounded-xl shadow-sm inline-block">
+                        🟢READY：再生可能 / 🔴NOT FOUND：未検出
+                    </p>
                 </div>
 
-                <!-- 最新回 (2026年2月) -->
-                <div class="reveal mb-12 active">
-                    <div class="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-teal-100 flex flex-col md:flex-row items-center gap-8">
-                        <div class="bg-teal-700 text-white p-6 rounded-[2rem] text-center min-w-[130px] shadow-lg">
-                            <p class="text-[10px] font-bold uppercase tracking-widest mb-1 text-teal-100 font-sans">最新</p>
-                            <p class="text-xl font-black font-serif italic mb-1">2026年</p>
-                            <p class="text-2xl font-black font-serif">2月</p>
-                        </div>
-                        <div class="flex-grow w-full">
-                            <h3 class="text-xl md:text-2xl font-black mb-4 font-serif text-slate-900 leading-tight italic decoration-teal-500/20 underline underline-offset-8">
-                                馬長勲先生の本にも。真の太極拳とは。
-                            </h3>
-                            <p class="text-slate-600 text-sm mb-6 leading-relaxed font-medium">「本当の太極拳は練習し終わるととても気持ちが良い」。馬長勲（ばちょうくん）先生の言葉を引用しながら、力を使わず、気持ちのよい緩みについてお話しします。</p>
-                            <audio controls class="w-full">
-                                <source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202602.mp3" type="audio/mpeg">
-                            </audio>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- アーカイブ一覧 (日付形式: 〇〇年〇月) -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal active">
-                    <!-- 2025年12月 -->
-                    <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
-                        <div>
-                            <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full mb-4 inline-block font-serif tracking-widest uppercase">2025年12月</span>
-                            <h4 class="font-black font-serif text-slate-800 text-lg mb-4 italic leading-relaxed">太極拳のお話</h4>
-                            <p class="text-slate-500 text-xs mb-8 leading-relaxed font-sans">一年の締めくくり。身体を芯から温める養生と、内面の静けさを保つコツについて。</p>
-                        </div>
-                        <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202512.mp3" type="audio/mpeg"></audio>
-                    </div>
-
-                    <!-- 2025年10月 -->
-                    <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
-                        <div>
-                            <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full mb-4 inline-block font-serif tracking-widest uppercase">2025年10月</span>
-                            <h4 class="font-black font-serif text-slate-800 text-lg mb-4 italic leading-relaxed">太極拳のお話</h4>
-                            <p class="text-slate-500 text-xs mb-8 leading-relaxed font-sans">秋の深まりとともに。呼吸を取り入れ、動作を丁寧につなげる充実感について。</p>
-                        </div>
-                        <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202510.mp3" type="audio/mpeg"></audio>
-                    </div>
-
-                    <!-- 2024年10月 (追加) -->
-                    <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
-                        <div>
-                            <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full mb-4 inline-block font-serif tracking-widest uppercase">2024年10月</span>
-                            <h4 class="font-black font-serif text-slate-800 text-lg mb-4 italic leading-relaxed">太極拳のお話：御礼</h4>
-                            <p class="text-slate-500 text-xs mb-8 leading-relaxed font-sans">フェスティバルが無事に終わったことへの感謝と、舞台を通じた成長についてお話しします。</p>
-                        </div>
-                        <audio controls><source src="2024年10月 フェスティバル無事に終わりました事 御礼申し上げます。.wav" type="audio/wav"></audio>
-                    </div>
-
-                    <!-- 2025年8月 -->
-                    <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
-                        <div>
-                            <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full mb-4 inline-block font-serif tracking-widest uppercase">2025年8月</span>
-                            <h4 class="font-black font-serif text-slate-800 text-lg mb-4 italic leading-relaxed">太極拳のお話</h4>
-                            <p class="text-slate-500 text-xs mb-8 leading-relaxed font-sans">夏の稽古。暑さの中でも心を穏やかに保ち、しなやかな動きを目指す大切さ。</p>
-                        </div>
-                        <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202508.mp3" type="audio/mpeg"></audio>
-                    </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
                     
-                    <!-- 2025年6月 -->
-                    <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
+                    <!-- 1: 2026.02 -->
+                    <div class="talk-card">
                         <div>
-                            <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full mb-4 inline-block font-serif tracking-widest uppercase">2025年6月</span>
-                            <h4 class="font-black font-serif text-slate-800 text-lg mb-4 italic leading-relaxed">太極拳のお話</h4>
-                            <p class="text-slate-500 text-xs mb-8 leading-relaxed font-sans">梅雨の時期の身体の整え方。関節をほぐし、気の巡りを良くするためのアプローチ。</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2026.02</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">馬長勲先生の本にも</h4>
                         </div>
-                        <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202506.mp3" type="audio/mpeg"></audio>
+                        <audio controls class="talk-audio" src="talk202602.mp3"></audio>
                     </div>
 
-                    <!-- 2024年5月 (追加) -->
-                    <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
+                    <!-- 2: 2025.12 -->
+                    <div class="talk-card">
                         <div>
-                            <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full mb-4 inline-block font-serif tracking-widest uppercase">2024年5月</span>
-                            <h4 class="font-black font-serif text-slate-800 text-lg mb-4 italic leading-relaxed">太極拳のお話：新しい仲間</h4>
-                            <p class="text-slate-500 text-xs mb-8 leading-relaxed font-sans">新しい仲間をお迎えし、共に稽古に励む喜びと、太極拳の和が広がることについて。</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2025.12</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">今年もあとひと月。</h4>
                         </div>
-                        <audio controls><source src="2024年5月 新しいお仲間をお迎えしたり.wav" type="audio/wav"></audio>
+                        <audio controls class="talk-audio" src="talk202512.mp3"></audio>
                     </div>
 
-                    <!-- 2025年4月 -->
-                    <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
+                    <!-- 3: 2025.10 -->
+                    <div class="talk-card">
                         <div>
-                            <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full mb-4 inline-block font-serif tracking-widest uppercase">2025年4月</span>
-                            <h4 class="font-black font-serif text-slate-800 text-lg mb-4 italic leading-relaxed">太極拳のお話：新年度</h4>
-                            <p class="text-slate-500 text-xs mb-8 leading-relaxed font-sans">新年度の始まり。基本に立ち返り、背筋を伸ばして一歩を踏み出す心構えについて。</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2025.10</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">用意不要力</h4>
                         </div>
-                        <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202504.mp3" type="audio/mpeg"></audio>
+                        <audio controls class="talk-audio" src="talk202510.mp3"></audio>
                     </div>
 
-                    <!-- 2024年4月 (追加) -->
-                    <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
+                    <!-- 4: 2025.08 -->
+                    <div class="talk-card">
                         <div>
-                            <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full mb-4 inline-block font-serif tracking-widest uppercase">2024年4月</span>
-                            <h4 class="font-black font-serif text-slate-800 text-lg mb-4 italic leading-relaxed">太極拳のお話：挑戦</h4>
-                            <p class="text-slate-500 text-xs mb-8 leading-relaxed font-sans">演武会に向けて新しい動作に挑戦する皆様。努力の過程にある充実感をお話しします。</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2025.08</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">日常では何かをするのに</h4>
                         </div>
-                        <audio controls><source src="2024年4月 今回の演武会での披露を目指し新しく覚える努力をしている方々.wav" type="audio/wav"></audio>
+                        <audio controls class="talk-audio" src="talk202508.mp3"></audio>
                     </div>
 
-                    <!-- 2024年3月 (追加) -->
-                    <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
+                    <!-- 5: 2025.06 -->
+                    <div class="talk-card">
                         <div>
-                            <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full mb-4 inline-block font-serif tracking-widest uppercase">2024年3月</span>
-                            <h4 class="font-black font-serif text-slate-800 text-lg mb-4 italic leading-relaxed">太極拳のお話：演武会</h4>
-                            <p class="text-slate-500 text-xs mb-8 leading-relaxed font-sans">太極拳協会の総会と演武会に向けて。日頃の成果を披露するための準備と心構え。</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2025.06</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">太極拳を語る本</h4>
                         </div>
-                        <audio controls><source src="2024年3月 太極拳協会の総会・演武会が近づいてきました。.wav" type="audio/wav"></audio>
+                        <audio controls class="talk-audio" src="talk202506.mp3"></audio>
                     </div>
 
-                    <!-- 2025年2月 -->
-                    <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
+                    <!-- 6: 2025.04 -->
+                    <div class="talk-card">
                         <div>
-                            <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full mb-4 inline-block font-serif tracking-widest uppercase">2025年2月</span>
-                            <h4 class="font-black font-serif text-slate-800 text-lg mb-4 italic leading-relaxed">太極拳のお話：寒さ</h4>
-                            <p class="text-slate-500 text-xs mb-8 leading-relaxed font-sans">厳しい寒さの中でも重心を安定させて丹田に力を蓄える、冬の太極拳の極意。</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2025.04</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">新年度を迎え</h4>
                         </div>
-                        <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202502.mp3" type="audio/mpeg"></audio>
+                        <audio controls class="talk-audio" src="talk202504.mp3"></audio>
                     </div>
 
-                    <!-- 2024年2月 (追加) -->
-                    <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
+                    <!-- 7: 2025.02 -->
+                    <div class="talk-card">
                         <div>
-                            <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full mb-4 inline-block font-serif tracking-widest uppercase">2024年2月</span>
-                            <h4 class="font-black font-serif text-slate-800 text-lg mb-4 italic leading-relaxed">太極拳のお話：立椿</h4>
-                            <p class="text-slate-500 text-xs mb-8 leading-relaxed font-sans">「立椿（たんとう）」の教え。杭のように立ち、静止の中で自分の内面を見つめる時間。</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2025.02</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">立春、緩める身体</h4>
                         </div>
-                        <audio controls><source src="2024年2月 立椿 “たんとう” 杭のように只立つ。.wav" type="audio/wav"></audio>
+                        <audio controls class="talk-audio" src="talk202502.mp3"></audio>
                     </div>
 
-                    <!-- 2024年1月 (追加) -->
-                    <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
+                    <!-- 8: 2024.12 -->
+                    <div class="talk-card">
                         <div>
-                            <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full mb-4 inline-block font-serif tracking-widest uppercase">2024年1月</span>
-                            <h4 class="font-black font-serif text-slate-800 text-lg mb-4 italic leading-relaxed">太極拳のお話：吉報</h4>
-                            <p class="text-slate-500 text-xs mb-8 leading-relaxed font-sans">年の初めに届いた嬉しい知らせ。継続することの大切さと、成果が形になる喜び。</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2024.12</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">一年の締めくくり</h4>
                         </div>
-                        <audio controls><source src="2024年1月 今年の締めくくりに吉報です。.wav" type="audio/wav"></audio>
+                        <audio controls class="talk-audio" src="talk202412.mp3"></audio>
                     </div>
 
-                    <!-- 2024年12月 -->
-                    <div class="talk-card bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col justify-between border border-slate-100">
+                    <!-- 9: 2024.10 -->
+                    <div class="talk-card">
                         <div>
-                            <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-4 py-1 rounded-full mb-4 inline-block font-serif tracking-widest uppercase">2024年12月</span>
-                            <h4 class="font-black font-serif text-slate-800 text-lg mb-4 italic leading-relaxed">太極拳のお話</h4>
-                            <p class="text-slate-500 text-xs mb-8 leading-relaxed font-sans">どんぐりの会の始まりの心。太極拳への感謝と、継続していく価値を語ります。</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2024.10</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">フェスティバル御礼</h4>
                         </div>
-                        <audio controls><source src="https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/talk202412.mp3" type="audio/mpeg"></audio>
+                        <audio controls class="talk-audio" src="talk202410.mp3"></audio>
                     </div>
+
+                    <!-- 10: 2024.05 -->
+                    <div class="talk-card">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2024.05</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">お仲間をお迎えして</h4>
+                        </div>
+                        <audio controls class="talk-audio" src="talk202405.mp3"></audio>
+                    </div>
+
+                    <!-- 11: 2024.04 -->
+                    <div class="talk-card">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2024.04</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">披露を目指して</h4>
+                        </div>
+                        <audio controls class="talk-audio" src="talk202404.mp3"></audio>
+                    </div>
+
+                    <!-- 12: 2024.03 -->
+                    <div class="talk-card">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2024.03</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">足指の運動</h4>
+                        </div>
+                        <audio controls class="talk-audio" src="talk202403.mp3"></audio>
+                    </div>
+
+                    <!-- 13: 2024.02 -->
+                    <div class="talk-card">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2024.02</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">杭のように只立つ</h4>
+                        </div>
+                        <audio controls class="talk-audio" src="talk202402.mp3"></audio>
+                    </div>
+
+                    <!-- 14: 2024.01 -->
+                    <div class="talk-card">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase">2024.01</span>
+                                <div class="flex items-center"><span class="status-dot status-loading"></span><span class="status-text text-slate-400">LOADING</span></div>
+                            </div>
+                            <h4 class="font-black font-serif text-slate-800 text-lg leading-tight mb-4 italic">新年の吉報</h4>
+                        </div>
+                        <audio controls class="talk-audio" src="talk202401.mp3"></audio>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Wix誘導 -->
+        <section class="py-24 bg-white reveal text-center">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="bg-teal-900 text-white rounded-[3rem] p-12 shadow-2xl">
+                    <h2 class="text-3xl font-black mb-6 font-serif">詳細は公式サイト(Wix)へ</h2>
+                    <p class="mb-10 opacity-80 leading-loose">Wixサイトではさらに詳しく活動内容をご紹介しています。</p>
+                    <a href="https://yoshi0213saku.wixsite.com/my-site-2" target="_blank" class="bg-white text-teal-900 font-bold py-5 px-12 rounded-2xl hover:bg-teal-50 transition-all inline-block shadow-xl">Wixサイトを開く</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- フッター -->
-    <footer class="py-12 bg-white text-center border-t border-slate-100 text-slate-300">
-        <div class="flex items-center justify-center gap-2 mb-4">
-            <svg width="24" height="24" viewBox="0 0 100 100" class="text-teal-800 opacity-20">
-                <circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="4" fill="none"/>
-                <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/>
-            </svg>
-            <span class="text-xl font-black font-serif uppercase tracking-widest">Tai Chi <span class="text-teal-700">Donguri</span></span>
-        </div>
-        <p class="mt-4 text-[10px] tracking-widest opacity-50 uppercase text-slate-400">© Tai Chi Club Donguri-no-kai - Tomi-City</p>
+    <footer class="py-12 bg-white text-center border-t border-slate-100">
+        <p class="text-[10px] tracking-widest opacity-50 uppercase text-slate-400 font-bold">© Tai Chi Club Donguri-no-kai</p>
     </footer>
 
     <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const closeBtn = document.getElementById('close-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        function toggleMenu() {
-            mobileMenu.classList.toggle('open');
-            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        function updateStatus(dot, text, isOk) {
+            if (isOk) {
+                dot.className = 'status-dot status-ok';
+                text.textContent = 'READY';
+                text.className = 'status-text text-emerald-500 uppercase';
+            } else {
+                dot.className = 'status-dot status-error';
+                text.textContent = 'NOT FOUND';
+                text.className = 'status-text text-red-500 uppercase';
+            }
         }
 
-        menuBtn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => { 
-            link.addEventListener('click', () => { 
-                mobileMenu.classList.remove('open'); 
-                document.body.style.overflow = ''; 
-            }); 
-        });
+        function checkAudioStatus() {
+            document.querySelectorAll('.talk-card').forEach(card => {
+                const audio = card.querySelector('.talk-audio');
+                const dot = card.querySelector('.status-dot');
+                const text = card.querySelector('.status-text');
+                if (!audio || !dot || !text) return;
+
+                // 即座にチェック（キャッシュ済みなどの場合）
+                if (audio.readyState >= 3) {
+                    updateStatus(dot, text, true);
+                }
+
+                // 各種イベントでステータス更新
+                audio.addEventListener('canplaythrough', () => updateStatus(dot, text, true));
+                audio.addEventListener('canplay', () => updateStatus(dot, text, true));
+                audio.addEventListener('error', () => updateStatus(dot, text, false));
+                
+                // 読み込みが遅い場合でも15秒待機して判定
+                setTimeout(() => {
+                    if (audio.readyState < 3 && text.textContent === 'LOADING') {
+                        updateStatus(dot, text, false);
+                    }
+                }, 15000);
+            });
+        }
+
+        window.addEventListener('load', checkAudioStatus);
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
