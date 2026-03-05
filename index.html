@@ -345,12 +345,59 @@
                 <svg width="24" height="24" viewBox="0 0 100 100" class="text-teal-800 opacity-50"><circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="4" fill="none"/><path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/></svg>
                 <span class="text-xl font-black font-serif uppercase tracking-widest text-slate-800">Tai Chi <span class="text-teal-700">Donguri</span></span>
             </div>
-            <p class="text-[10px] tracking-widest opacity-50 uppercase text-slate-400 font-bold mb-4">© 太極拳どんぐりの会 - Tomi-City</p>
+            <p class="text-[10px] tracking-widest opacity-50 uppercase text-slate-400 font-bold mb-4">
+                © 太極拳どんぐりの会 - Tomi-City
+                <span id="visitor-count-container" class="ml-4 opacity-40 text-[9px] font-mono inline-block">
+                    VISITORS: <span id="visitor-count">----</span>
+                </span>
+            </p>
             <div class="text-[9px] text-slate-300 font-mono select-all tracking-wider">https://yoshi0213saku-spec.github.io/my-images/#talk</div>
         </div>
     </footer>
 
-    <script>
+    <script type="module">
+        // Firebase logic for visitor counter
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, onSnapshot, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+        async function initVisitorCounter(user) {
+            if (!user) return;
+            const counterDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'site_stats', 'visitor_counter');
+
+            // Listen for changes
+            onSnapshot(counterDocRef, (doc) => {
+                if (doc.exists()) {
+                    document.getElementById('visitor-count').textContent = doc.data().count.toLocaleString();
+                }
+            }, (error) => {});
+
+            // Increment count only once per session
+            if (!sessionStorage.getItem('visited')) {
+                try {
+                    await runTransaction(db, async (transaction) => {
+                        const counterDoc = await transaction.get(counterDocRef);
+                        const newCount = (counterDoc.exists() ? counterDoc.data().count : 0) + 1;
+                        transaction.set(counterDocRef, { count: newCount }, { merge: true });
+                    });
+                    sessionStorage.setItem('visited', 'true');
+                } catch (e) {}
+            }
+        }
+
+        // Initialize Auth
+        signInAnonymously(auth).catch(() => {});
+        onAuthStateChanged(auth, (user) => {
+            if (user) initVisitorCounter(user);
+        });
+
+        // UI Logic
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -362,6 +409,7 @@
         if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
         if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
         mobileLinks.forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }); });
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
