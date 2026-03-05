@@ -213,8 +213,8 @@
                     </p>
                     <div class="mt-8 text-slate-600 text-sm md:text-base leading-relaxed max-w-2xl mx-auto px-4 text-left md:text-center">
                         <ul class="inline-block text-left space-y-3 font-medium">
-                            <li>・太極拳って、こんなに面白い！佐藤先生の知恵と、AIのガイドで深まる発見.</li>
-                            <li>・なるほど！が止まらない。一生楽しめる太極拳の奥深さを、ご一緒に.</li>
+                            <li>・太極拳って、こんなに面白い！佐藤先生の知恵と、AIのガイドで深まる発見。</li>
+                            <li>・なるほど！が止まらない。一生楽しめる太極拳の奥深さを、ご一緒に。</li>
                             <li>・体だけでなく、心も知恵も健やかに。どんぐりの会で、新しい学びを始めませんか？</li>
                         </ul>
                     </div>
@@ -282,7 +282,7 @@
             </div>
         </section>
 
-        <!-- 運営・サポート情報（上下レイアウト + 左揃え） -->
+        <!-- AIサポーター・運営責任者セクション -->
         <section id="admin" class="py-16 bg-slate-50 border-t border-slate-100">
             <div class="container mx-auto px-6 max-w-4xl">
                 <div class="flex flex-col gap-12 items-start text-left">
@@ -295,15 +295,15 @@
                                 <!-- AI音声ガイド -->
                                 <div>
                                     <p class="font-bold border-l-4 border-teal-600 pl-3 mb-2">【AI音声ガイド】</p>
-                                    <p class="mb-3 text-slate-800">馬長勲老師の資料から探る「勁」「推手」、伝承の核心</p>
+                                    <p class="mb-3 text-slate-800 font-medium text-slate-700 text-base">馬長勲老師の資料から探る「勁」「推手」、伝承の核心</p>
                                     <audio controls class="h-8 w-full max-w-sm" src="talk-batyokun01.mp3"></audio>
-                                    <p class="text-[10px] text-slate-400 mt-1">※GitHub経由でmp3データを読み込みます</p>
+                                    <p class="text-[10px] text-slate-400 mt-2">※GitHub上の「talk-batyokun01.mp3」を再生します</p>
                                 </div>
                                 
                                 <!-- AI動画ガイド -->
                                 <div>
                                     <p class="font-bold border-l-4 border-teal-600 pl-3 mb-2">【AI動画ガイド】</p>
-                                    <p class="mb-3 text-slate-800">太極拳の魂：達人の対話から学ぶ知恵</p>
+                                    <p class="mb-3 text-slate-800 font-medium text-slate-700 text-base">太極拳の魂：達人の対話から学ぶ知恵</p>
                                     <a href="https://youtu.be/93PgtANrUMk" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-100 rounded-full text-red-600 font-bold hover:bg-red-100 transition-colors shadow-sm text-xs font-sans">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
                                         YouTubeで視聴する
@@ -341,26 +341,36 @@
 
     <footer class="py-12 bg-white text-center border-t border-slate-100">
         <div class="container mx-auto px-6 text-center">
-            <div class="flex items-center justify-center gap-2 mb-4">
-                <svg width="24" height="24" viewBox="0 0 100 100" class="text-teal-800 opacity-50"><circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="4" fill="none"/><path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/></svg>
-                <span class="text-xl font-black font-serif uppercase tracking-widest text-slate-800">Tai Chi <span class="text-teal-700">Donguri</span></span>
+            <!-- ロゴと訪問者カウンターの統合 -->
+            <div class="flex items-center justify-center gap-4 mb-4">
+                <div class="flex items-center gap-2">
+                    <svg width="24" height="24" viewBox="0 0 100 100" class="text-teal-800 opacity-50">
+                        <circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="4" fill="none"/>
+                        <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/>
+                    </svg>
+                    <span class="text-xl font-black font-serif uppercase tracking-widest text-slate-800">Tai Chi <span class="text-teal-700">Donguri</span></span>
+                </div>
+                <!-- 訪問者カウンター（ロゴの横） -->
+                <div id="visitor-count-container" class="opacity-40 text-[9px] font-mono flex items-center gap-1 border-l border-slate-200 pl-3 ml-1 self-center">
+                    <span class="uppercase tracking-tighter">Visitors:</span>
+                    <span id="visitor-count" class="font-bold tracking-widest">----</span>
+                </div>
             </div>
+            
             <p class="text-[10px] tracking-widest opacity-50 uppercase text-slate-400 font-bold mb-4">
                 © 太極拳どんぐりの会 - Tomi-City
-                <span id="visitor-count-container" class="ml-4 opacity-40 text-[9px] font-mono inline-block">
-                    VISITORS: <span id="visitor-count">----</span>
-                </span>
             </p>
-            <div class="text-[9px] text-slate-300 font-mono select-all tracking-wider">https://yoshi0213saku-spec.github.io/my-images/#talk</div>
+            <div class="text-[9px] text-slate-300 font-mono select-all tracking-wider opacity-60">https://yoshi0213saku-spec.github.io/my-images/#talk</div>
         </div>
     </footer>
 
+    <!-- Scripts (Animation & visitor counting logic) -->
     <script type="module">
-        // Firebase logic for visitor counter
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, getDoc, setDoc, onSnapshot, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, onSnapshot, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
+        // Firebase Configuration
         const firebaseConfig = JSON.parse(__firebase_config);
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
@@ -371,47 +381,59 @@
             if (!user) return;
             const counterDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'site_stats', 'visitor_counter');
 
-            // Listen for changes
-            onSnapshot(counterDocRef, (doc) => {
-                if (doc.exists()) {
-                    document.getElementById('visitor-count').textContent = doc.data().count.toLocaleString();
+            onSnapshot(counterDocRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    const count = docSnap.data().count;
+                    document.getElementById('visitor-count').textContent = count.toString().padStart(4, '0');
                 }
             }, (error) => {});
 
-            // Increment count only once per session
             if (!sessionStorage.getItem('visited')) {
                 try {
                     await runTransaction(db, async (transaction) => {
                         const counterDoc = await transaction.get(counterDocRef);
-                        const newCount = (counterDoc.exists() ? counterDoc.data().count : 0) + 1;
-                        transaction.set(counterDocRef, { count: newCount }, { merge: true });
+                        const currentCount = counterDoc.exists() ? counterDoc.data().count : 0;
+                        transaction.set(counterDocRef, { count: currentCount + 1 }, { merge: true });
                     });
                     sessionStorage.setItem('visited', 'true');
                 } catch (e) {}
             }
         }
 
-        // Initialize Auth
-        signInAnonymously(auth).catch(() => {});
+        const initAuth = async () => {
+            try {
+                await signInAnonymously(auth);
+            } catch (err) {}
+        };
+        
+        initAuth();
         onAuthStateChanged(auth, (user) => {
             if (user) initVisitorCounter(user);
         });
 
-        // UI Logic
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
+        
         function toggleMenu() {
             mobileMenu.classList.toggle('open');
             document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
         }
+        
         if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
         if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }); });
+        mobileLinks.forEach(link => { 
+            link.addEventListener('click', () => { 
+                mobileMenu.classList.remove('open'); 
+                document.body.style.overflow = ''; 
+            }); 
+        });
         
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) entry.target.classList.add('active'); 
+            });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
