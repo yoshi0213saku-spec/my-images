@@ -24,11 +24,12 @@
 </head>
 <body class="antialiased selection:bg-teal-100 selection:text-teal-900">
 
+    <!-- ヘッダー -->
     <header class="fixed w-full z-50 bg-white/80 backdrop-blur-lg border-b border-teal-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-3 group">
                 <svg width="32" height="32" viewBox="0 0 100 100" class="text-teal-800 transition-transform group-hover:rotate-180 duration-1000"><circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="2" fill="none"/><path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/><circle cx="50" cy="26" r="6" fill="white"/><circle cx="50" cy="74" r="6" fill="currentColor"/></svg>
-                <span class="text-xl md:text-2xl font-black text-slate-800 tracking-tighter font-serif text-teal-800 uppercase">太極拳どんぐりの会</span>
+                <span class="text-xl md:text-2xl font-black text-slate-800 tracking-tighter font-serif text-teal-800 uppercase text-left">太極拳どんぐりの会</span>
             </a>
             <nav class="hidden lg:flex items-center gap-6 text-[11px] font-bold text-slate-500 tracking-widest uppercase">
                 <a href="#about" class="hover:text-teal-700 transition-colors">想い</a>
@@ -40,6 +41,7 @@
         </div>
     </header>
 
+    <!-- モバイルメニュー -->
     <div id="mobile-menu" class="fixed inset-0 z-[60] bg-white flex flex-col p-8 lg:hidden">
         <button id="close-btn" class="self-end p-2 text-slate-800"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
         <div class="flex flex-col gap-6 mt-8 text-xl font-serif text-slate-800 text-center">
@@ -52,8 +54,8 @@
 
     <main>
         <!-- ヒーロー -->
-        <section class="hero-gradient min-h-[85vh] flex items-center pt-24">
-            <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center text-left">
+        <section class="hero-gradient min-h-[85vh] flex items-center pt-24 text-left">
+            <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
                 <div class="reveal active">
                     <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/60 border border-teal-100 rounded-full text-teal-800 text-[11px] font-bold mb-6">長野県東御市 中央公民館にて活動中</div>
                     <h1 class="text-4xl md:text-7xl font-black text-slate-900 leading-tight mb-8 font-serif">しなやかに整えて、<br><span class="text-teal-700 italic">心から笑う。</span></h1>
@@ -70,8 +72,8 @@
         </section>
 
         <!-- 想い -->
-        <section id="about" class="py-24 bg-white">
-            <div class="container mx-auto px-6 max-w-4xl text-left">
+        <section id="about" class="py-24 bg-white text-left">
+            <div class="container mx-auto px-6 max-w-4xl">
                 <h2 class="text-3xl md:text-5xl font-black font-serif text-slate-800 mb-12 italic text-center">どんぐりの会の想い</h2>
                 <div class="grid md:grid-cols-2 gap-12 items-center reveal">
                     <div class="space-y-6 text-slate-600 leading-loose">
@@ -91,10 +93,10 @@
         </section>
 
         <!-- 教室案内 -->
-        <section id="info" class="py-24 bg-slate-50">
+        <section id="info" class="py-24 bg-slate-50 text-left">
             <div class="container mx-auto px-6 max-w-4xl">
                 <h2 class="text-3xl md:text-5xl font-black font-serif text-slate-800 mb-12 italic text-center">教室案内</h2>
-                <div class="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm border border-slate-100 space-y-12 text-left max-w-2xl mx-auto reveal">
+                <div class="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm border border-slate-100 space-y-12 max-w-2xl mx-auto reveal">
                     <div>
                         <h4 class="text-teal-700 font-bold mb-2 uppercase text-xs tracking-widest">スケジュール</h4>
                         <p class="text-xl font-serif text-slate-800">毎週火曜日 13:30 〜 15:30</p>
@@ -109,7 +111,7 @@
                     <div>
                         <h4 class="text-teal-700 font-bold mb-2 uppercase text-xs tracking-widest">会場</h4>
                         <p class="text-xl font-serif text-slate-800 leading-tight">東御市中央公民館（3階講堂他）</p>
-                        <p class="text-lg font-sans text-slate-700 font-bold mt-2">TEL 0268 75 5506</p>
+                        <p class="text-lg font-sans text-slate-700 font-bold mt-2 tracking-widest uppercase">TEL 0268 75 5506</p>
                     </div>
                     <div>
                         <h4 class="text-teal-700 font-bold mb-2 uppercase text-xs tracking-widest">会費</h4>
@@ -119,11 +121,11 @@
             </div>
         </section>
 
-        <!-- 講話セクション -->
-        <section id="talk" class="py-24 bg-white">
-            <div class="container mx-auto px-6 max-w-6xl text-center">
+        <!-- 講話セクション（全14回） -->
+        <section id="talk" class="py-24 bg-white text-center">
+            <div class="container mx-auto px-6 max-w-6xl">
                 <h2 class="text-3xl md:text-5xl font-black font-serif text-teal-800 mb-6 italic uppercase tracking-widest">佐藤先生の講話</h2>
-                <p class="text-slate-500 mb-12 max-w-2xl mx-auto text-sm leading-relaxed">教室の月間予定表に掲載された『先生のお言葉』を、AI音声で講話形式にまとめました。</p>
+                <p class="text-slate-500 mb-12 max-w-2xl mx-auto text-sm leading-relaxed px-4">教室の月間予定表に掲載された『先生のお言葉』を、AI音声で講話形式にまとめました。</p>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
                     <div class="talk-card">
                         <div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block">2026.02</span><h4 class="font-bold text-slate-800 text-lg mb-6 italic leading-tight">馬長勲先生の本にも</h4></div>
@@ -137,55 +139,104 @@
                         <div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block">2025.10</span><h4 class="font-bold text-slate-800 text-lg mb-6 italic leading-tight">用意不要力</h4></div>
                         <audio controls src="talk202510.mp3"></audio>
                     </div>
+                    <div class="talk-card">
+                        <div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block">2025.08</span><h4 class="font-bold text-slate-800 text-lg mb-6 italic leading-tight">日常では何かをするのに</h4></div>
+                        <audio controls src="talk202508.mp3"></audio>
+                    </div>
+                    <div class="talk-card">
+                        <div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block">2025.06</span><h4 class="font-bold text-slate-800 text-lg mb-6 italic leading-tight">太極拳を語る本</h4></div>
+                        <audio controls src="talk202506.mp3"></audio>
+                    </div>
+                    <div class="talk-card">
+                        <div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block">2025.04</span><h4 class="font-bold text-slate-800 text-lg mb-6 italic leading-tight">新年度を迎え</h4></div>
+                        <audio controls src="talk202504.mp3"></audio>
+                    </div>
+                    <div class="talk-card">
+                        <div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block">2025.02</span><h4 class="font-bold text-slate-800 text-lg mb-6 italic leading-tight">立春、緩める身体</h4></div>
+                        <audio controls src="talk202502.mp3"></audio>
+                    </div>
+                    <div class="talk-card">
+                        <div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block">2024.12</span><h4 class="font-bold text-slate-800 text-lg mb-6 italic leading-tight">一年の締めくくり</h4></div>
+                        <audio controls src="talk202412.mp3"></audio>
+                    </div>
+                    <div class="talk-card">
+                        <div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block">2024.10</span><h4 class="font-bold text-slate-800 text-lg mb-6 italic leading-tight">フェスティバル御礼</h4></div>
+                        <audio controls src="talk202410.mp3"></audio>
+                    </div>
+                    <div class="talk-card">
+                        <div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block">2024.05</span><h4 class="font-bold text-slate-800 text-lg mb-6 italic leading-tight">お仲間をお迎えして</h4></div>
+                        <audio controls src="talk202405.mp3"></audio>
+                    </div>
+                    <div class="talk-card">
+                        <div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block">2024.04</span><h4 class="font-bold text-slate-800 text-lg mb-6 italic leading-tight">披露を目指して</h4></div>
+                        <audio controls src="talk202404.mp3"></audio>
+                    </div>
+                    <div class="talk-card">
+                        <div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block">2024.03</span><h4 class="font-bold text-slate-800 text-lg mb-6 italic leading-tight">足指の運動</h4></div>
+                        <audio controls src="talk202403.mp3"></audio>
+                    </div>
+                    <div class="talk-card">
+                        <div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block">2024.02</span><h4 class="font-bold text-slate-800 text-lg mb-6 italic leading-tight">杭のように只立つ</h4></div>
+                        <audio controls src="talk202402.mp3"></audio>
+                    </div>
+                    <div class="talk-card">
+                        <div><span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block">2024.01</span><h4 class="font-bold text-slate-800 text-lg mb-6 italic leading-tight">新年の吉報</h4></div>
+                        <audio controls src="talk202401.mp3"></audio>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 管理・サポート -->
-        <section id="admin" class="py-16 bg-slate-50 border-t border-slate-100">
-            <div class="container mx-auto px-6 max-w-4xl text-left">
+        <!-- AIサポーター・運営情報 -->
+        <section id="admin" class="py-16 bg-slate-50 border-t border-slate-100 text-left">
+            <div class="container mx-auto px-6 max-w-4xl">
                 <div class="flex flex-col gap-12 reveal">
                     <div>
                         <h4 class="text-teal-700 font-bold mb-3 uppercase text-xs tracking-widest">AIサポーター</h4>
-                        <div class="space-y-6">
-                            <p class="text-xl font-serif text-slate-800">「AIデジタル書斎」</p>
-                            <div class="text-sm space-y-8">
+                        <div class="space-y-6 text-slate-700">
+                            <p class="text-xl font-serif text-slate-800">「AIデジタル書斎」<span class="text-sm font-sans font-normal opacity-50 ml-2">(NotebookLMの活用)</span></p>
+                            <div class="text-sm space-y-8 mt-6">
                                 <div>
-                                    <p class="font-bold border-l-4 border-teal-600 pl-3 mb-2 text-xs text-slate-800">【AI音声ガイド】</p>
-                                    <p class="mb-3 text-slate-700 font-medium">馬長勲老師の資料から探る「勁」「推手」、伝承の核心</p>
-                                    <audio controls class="max-w-sm" src="talk-batyokun01.mp3"></audio>
+                                    <p class="font-bold border-l-4 border-teal-600 pl-3 mb-2 text-xs text-slate-800 uppercase tracking-widest">【AI音声ガイド】</p>
+                                    <p class="mb-3 font-medium text-base">馬長勲老師の資料から探る「勁」「推手」、伝承の核心</p>
+                                    <audio controls class="max-w-sm w-full" src="talk-batyokun01.mp3"></audio>
+                                    <p class="text-[10px] text-slate-400 mt-2 italic">※GitHub: talk-batyokun01.mp3</p>
                                 </div>
                                 <div>
-                                    <p class="font-bold border-l-4 border-teal-600 pl-3 mb-2 text-xs text-slate-800">【AI動画ガイド】</p>
-                                    <a href="https://youtu.be/93PgtANrUMk" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-100 rounded-full text-red-600 font-bold text-xs hover:bg-red-100 transition-colors">YouTubeで視聴する</a>
+                                    <p class="font-bold border-l-4 border-teal-600 pl-3 mb-2 text-xs text-slate-800 uppercase tracking-widest">【AI動画ガイド】</p>
+                                    <p class="mb-3 font-medium text-base text-slate-700">太極拳の魂：達人の対話から学ぶ知恵</p>
+                                    <a href="https://youtu.be/93PgtANrUMk" target="_blank" class="inline-flex items-center gap-2 px-6 py-2 bg-red-50 border border-red-100 rounded-full text-red-600 font-bold text-xs hover:bg-red-100 transition-colors shadow-sm">YouTubeで視聴する</a>
                                 </div>
+                                <p class="font-bold border-l-4 border-slate-300 pl-3 text-slate-400 uppercase text-xs tracking-widest">【PDFガイド】</p>
+                                <p class="text-xs text-teal-600 font-bold mt-4 pt-4 border-t border-teal-50">会員専用：自習リソースの案内</p>
                             </div>
                         </div>
                     </div>
                     <div class="w-16 h-px bg-teal-200 opacity-50"></div>
                     <div>
                         <h4 class="text-teal-700 font-bold mb-4 uppercase text-xs tracking-widest">ホームページ運営責任者</h4>
-                        <p class="text-xl font-serif text-slate-800">中島義健 <span class="text-sm font-sans font-normal opacity-50">(どんぐりの会 会員)</span></p>
-                        <p class="text-sm text-slate-600 mt-2 font-medium">日本武術太極拳連盟 太極拳3段・B級指導員</p>
-                        <a href="mailto:yoshi0213.saku@gmail.com" class="text-teal-700 text-xs mt-3 inline-block underline font-bold">yoshi0213.saku@gmail.com</a>
+                        <div class="space-y-2">
+                            <p class="text-xl font-serif text-slate-800">中島義健 <span class="text-sm font-sans font-normal opacity-50">(どんぐりの会 会員)</span></p>
+                            <p class="text-sm text-slate-600 font-medium">日本武術太極拳連盟 太極拳3段・B級指導員</p>
+                            <a href="mailto:yoshi0213.saku@gmail.com" class="text-teal-700 text-xs mt-4 inline-block underline font-bold uppercase tracking-wide">yoshi0213.saku@gmail.com</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- フッター -->
     <footer class="py-12 bg-white text-center border-t border-slate-100">
         <div class="container mx-auto px-6 text-center">
-            <!-- ロゴと訪問者カウンターの統合配置 -->
             <div class="flex items-center justify-center gap-4 mb-4 flex-wrap">
                 <div class="flex items-center gap-2">
                     <svg width="24" height="24" viewBox="0 0 100 100" class="text-teal-800 opacity-50"><circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="4" fill="none"/><path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/></svg>
                     <span class="text-xl font-black font-serif uppercase tracking-widest text-slate-800">Tai Chi <span class="text-teal-700">Donguri</span></span>
                 </div>
-                <!-- 訪問者カウンター (ロゴの横に小さく表示) -->
-                <div id="visitor-box" class="opacity-40 text-[9px] font-mono flex items-center gap-1 border-l border-slate-200 pl-3 ml-1 self-center h-4 hidden">
-                    <span class="uppercase tracking-tighter">Visitors:</span>
-                    <span id="v-num" class="font-bold tracking-widest">----</span>
+                <!-- 訪問者カウンター (ロゴの横) -->
+                <div id="v-box" class="opacity-40 text-[9px] font-mono flex items-center gap-1 border-l border-slate-200 pl-3 ml-1 self-center h-4 hidden">
+                    <span class="uppercase">Visitors:</span><span id="v-num" class="font-bold tracking-widest">----</span>
                 </div>
             </div>
             <p class="text-[10px] tracking-widest opacity-40 uppercase font-bold mb-4">© 太極拳どんぐりの会 - Tomi-City</p>
@@ -196,65 +247,76 @@
     <!-- Scripts -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, onSnapshot, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebaseの安全な初期化ロジック (エラーによる停止を防止)
-        const initFirebaseCounter = async () => {
+        const startVisitorCounter = async () => {
             try {
-                // 環境変数の存在チェック
                 if (typeof __firebase_config === 'undefined') return;
-                
                 const config = JSON.parse(__firebase_config);
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'donguri-default';
+                
                 const app = initializeApp(config);
                 const auth = getAuth(app);
                 const db = getFirestore(app);
-                const appId = typeof __app_id !== 'undefined' ? __app_id : 'donguri-default';
-                
-                // カウンターのUIを表示
-                document.getElementById('visitor-box').classList.remove('hidden');
 
-                const counterDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'site_stats', 'visitor_counter');
-
-                // データのリアルタイム購読
-                onSnapshot(counterDocRef, (snap) => {
-                    if (snap.exists()) {
-                        document.getElementById('v-num').textContent = snap.data().count.toString().padStart(4, '0');
-                    }
-                }, (err) => {});
-
-                // 認証と訪問数カウント (+1)
-                const user = await signInAnonymously(auth).then(res => res.user).catch(() => null);
-                if (user && !sessionStorage.getItem('donguri_visited')) {
-                    await runTransaction(db, async (transaction) => {
-                        const snap = await transaction.get(counterDocRef);
-                        const current = snap.exists() ? snap.data().count : 0;
-                        transaction.set(counterDocRef, { count: current + 1 }, { merge: true });
-                    });
-                    sessionStorage.setItem('donguri_visited', 'true');
+                // 認証処理の改善 (RULE 3に厳密に準拠)
+                let user;
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    const res = await signInWithCustomToken(auth, __initial_auth_token);
+                    user = res.user;
+                } else {
+                    const res = await signInAnonymously(auth);
+                    user = res.user;
                 }
-            } catch (error) {
-                // ローカル環境等のエラー時は静かに無視して表示を止めない
+
+                if (user) {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'visitors', 'total');
+                    document.getElementById('v-box').classList.remove('hidden');
+
+                    // リアルタイム監視 (エラーコールバックを追加して診断)
+                    onSnapshot(docRef, (snap) => {
+                        if (snap.exists()) {
+                            document.getElementById('v-num').textContent = snap.data().count.toString().padStart(4, '0');
+                        }
+                    }, (error) => {
+                        console.error("Firestore Permission or Path Error:", error);
+                    });
+
+                    // 訪問カウントアップ処理
+                    if (!sessionStorage.getItem('dg_v')) {
+                        await runTransaction(db, async (tx) => {
+                            const snap = await tx.get(docRef);
+                            const current = snap.exists() ? snap.data().count : 0;
+                            tx.set(docRef, { count: current + 1 }, { merge: true });
+                        });
+                        sessionStorage.setItem('dg_v', '1');
+                    }
+                }
+            } catch (err) {
+                console.error("Firebase Initialization Error:", err);
             }
         };
 
-        // 実行
-        initFirebaseCounter();
+        // 実行開始
+        startVisitorCounter();
 
         // UI Interactions
-        document.getElementById('menu-btn').onclick = () => document.getElementById('mobile-menu').classList.add('open');
-        document.getElementById('close-btn').onclick = () => document.getElementById('mobile-menu').classList.remove('open');
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.onclick = () => document.getElementById('mobile-menu').classList.remove('open');
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.onclick = () => mobileMenu.classList.add('open');
+        closeBtn.onclick = () => mobileMenu.classList.remove('open');
+        document.querySelectorAll('.mobile-link').forEach(l => {
+            l.onclick = () => mobileMenu.classList.remove('open');
         });
 
         // Scroll Reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
+        const obs = new IntersectionObserver((es) => {
+            es.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
         }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     </script>
 </body>
 </html>
