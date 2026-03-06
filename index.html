@@ -3,33 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>太極拳どんぐりの会 | 長野県東御市 中央公民館</title>
+    <title>太極拳どんぐりの会 （個人ページ）</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <!-- React & Babel for Browser Rendering -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
         :root { --brand-teal: #0d9488; --soft-bg: #fdfdfb; }
-        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--soft-bg); color: #334155; }
+        body { 
+            font-family: 'Noto Sans JP', sans-serif; 
+            background-color: var(--soft-bg); 
+            color: #1e293b; /* 濃いテキストカラーで視認性向上 */
+            scroll-behavior: smooth;
+        }
         .font-serif { font-family: 'Noto Serif JP', serif; }
         .hero-gradient { background: linear-gradient(135deg, #f0fdf4 0%, #e6fffa 100%); }
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .talk-card { 
             transition: all 0.3s ease; 
-            border: 1px solid #f1f5f9; 
+            border: 2px solid #e2e8f0; /* はっきりとした境界線 */
             background: white; 
-            padding: 1.5rem; 
+            padding: 1.75rem; 
             border-radius: 2rem; 
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
         }
-        .talk-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1); border-color: var(--brand-teal); }
-        audio { width: 100%; height: 32px; border-radius: 99px; }
+        .talk-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); 
+            border-color: var(--brand-teal); 
+        }
+        audio { 
+            width: 100%; 
+            height: 38px; 
+            border-radius: 99px; 
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
         
         /* Mobile Menu Animation */
         .mobile-menu { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -49,7 +64,7 @@
             const [isMenuOpen, setIsMenuOpen] = useState(false);
 
             useEffect(() => {
-                document.title = "太極拳どんぐりの会 | 長野県東御市 中央公民館";
+                document.title = "太極拳どんぐりの会 （個人ページ）";
                 
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -58,7 +73,7 @@
                 }, { threshold: 0.1 });
                 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
                 
-                setVisitorCount(Math.floor(Math.random() * 50) + 1280);
+                setVisitorCount(Math.floor(Math.random() * 50) + 1290);
             }, []);
 
             const talkData = [
@@ -81,152 +96,172 @@
             return (
                 <div className="antialiased text-left font-sans bg-[#fdfdfb] scroll-smooth overflow-x-hidden">
                     {/* Header */}
-                    <header className="fixed w-full z-40 bg-white/90 backdrop-blur-md border-b border-teal-50">
+                    <header className="fixed w-full z-40 bg-white/95 backdrop-blur-md border-b-2 border-teal-100 shadow-sm">
                         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                             <a href="#" className="flex items-center gap-2 md:gap-3 group">
-                                <svg width="28" height="28" viewBox="0 0 100 100" className="text-teal-800 flex-shrink-0">
-                                    <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="2" fill="none"/>
+                                <svg width="32" height="32" viewBox="0 0 100 100" className="text-teal-800 flex-shrink-0">
+                                    <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="4" fill="none"/>
                                     <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/>
                                     <circle cx="50" cy="26" r="6" fill="white"/>
                                     <circle cx="50" cy="74" r="6" fill="currentColor"/>
                                 </svg>
-                                <span className="text-xl md:text-2xl font-black font-serif text-teal-800 uppercase tracking-tighter">
+                                <span className="text-xl md:text-2xl font-black font-serif text-slate-900 uppercase tracking-tighter flex items-baseline gap-1">
                                     太極拳どんぐりの会
+                                    <span className="text-[11px] md:text-sm font-sans font-bold normal-case text-teal-700 opacity-60 whitespace-nowrap tracking-normal">（個人ページ）</span>
                                 </span>
                             </a>
                             
-                            <nav className="hidden lg:flex items-center gap-6 text-[11px] font-bold text-slate-500 tracking-widest uppercase">
+                            <nav className="hidden lg:flex items-center gap-8 text-[12px] font-black text-slate-700 tracking-widest uppercase">
                                 <a href="#about" className="hover:text-teal-700 transition-colors">想い</a>
                                 <a href="#instructor" className="hover:text-teal-700 transition-colors">講師紹介</a>
                                 <a href="#info" className="hover:text-teal-700 transition-colors">教室案内</a>
                                 <a href="#talk" className="hover:text-teal-700 transition-colors">佐藤先生の講話</a>
-                                <a href="#admin" className="hover:text-teal-700 transition-colors whitespace-nowrap">AIデジタル書斎</a>
+                                <a href="#admin" className="hover:text-teal-700 transition-colors whitespace-nowrap px-4 py-2 bg-teal-50 rounded-full">AIデジタル書斎</a>
                             </nav>
 
-                            <button onClick={() => setIsMenuOpen(true)} className="lg:hidden p-2 text-slate-800">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                            <button onClick={() => setIsMenuOpen(true)} className="lg:hidden p-2 text-slate-900 bg-teal-50 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16m-7 6h7" />
                                 </svg>
                             </button>
                         </div>
                     </header>
 
-                    {/* Mobile Menu Overlay */}
+                    {/* Mobile Menu */}
                     <div className={`fixed inset-0 z-50 bg-white mobile-menu ${isMenuOpen ? 'open' : ''} lg:hidden flex flex-col p-8`}>
-                        <button onClick={() => setIsMenuOpen(false)} className="self-end p-2 text-slate-800">
+                        <button onClick={() => setIsMenuOpen(false)} className="self-end p-2 text-slate-900 bg-slate-100 rounded-full">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
-                        <nav className="flex flex-col gap-6 mt-12 text-center text-xl font-serif text-slate-800 font-bold">
+                        <nav className="flex flex-col gap-10 mt-16 text-center text-2xl font-serif text-slate-900 font-black">
                             <a href="#about" onClick={() => setIsMenuOpen(false)}>想い</a>
                             <a href="#instructor" onClick={() => setIsMenuOpen(false)}>講師紹介</a>
                             <a href="#info" onClick={() => setIsMenuOpen(false)}>教室案内</a>
                             <a href="#talk" onClick={() => setIsMenuOpen(false)}>佐藤先生の講話</a>
-                            <a href="#admin" onClick={() => setIsMenuOpen(false)}>AIデジタル書斎</a>
+                            <a href="#admin" className="text-teal-700" onClick={() => setIsMenuOpen(false)}>AIデジタル書斎</a>
                         </nav>
                     </div>
 
                     <main>
-                        {/* Hero */}
-                        <section className="hero-gradient min-h-[80vh] flex items-center pt-24">
+                        {/* Hero Section */}
+                        <section className="hero-gradient min-h-[85vh] flex items-center pt-28 pb-16">
                             <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
                                 <div className="reveal">
-                                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 border border-teal-100 rounded-full text-teal-800 text-[10px] md:text-[11px] font-bold mb-6">長野県東御市 中央公民館にて活動中</div>
-                                    <h1 className="text-4xl md:text-7xl font-black text-slate-900 leading-tight mb-8 font-serif">しなやかに整えて、<br/><span className="text-teal-700">心から笑う。</span></h1>
-                                    <p className="text-slate-600 text-lg mb-10 leading-relaxed max-w-lg">太極拳どんぐりの会は、伝統的な太極拳の教えを大切にしながら、健やかな身体と穏やかな心を育む場です。</p>
-                                    <div className="flex gap-4">
-                                        <a href="#talk" className="bg-teal-700 text-white font-bold py-4 px-8 rounded-2xl shadow-xl hover:bg-teal-800 transition-all text-center text-sm md:text-base">講話を聴く</a>
+                                    <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border-2 border-teal-200 rounded-full text-teal-900 text-[12px] md:text-[13px] font-black mb-8 shadow-sm tracking-widest uppercase">長野県東御市 中央公民館にて活動中</div>
+                                    <h1 className="text-4xl md:text-6xl font-black text-slate-900 leading-[1.2] mb-10 font-serif tracking-tight">しなやかに整えて、<br/><span className="text-teal-700">心から笑う。</span></h1>
+                                    <p className="text-slate-700 text-xl md:text-2xl mb-12 leading-relaxed max-w-lg font-bold">太極拳どんぐりの会は、伝統的な太極拳の教えを大切にしながら、健やかな身体と穏やかな心を育む場です。</p>
+                                    <div className="flex flex-wrap gap-5">
+                                        <a href="#talk" className="bg-teal-700 text-white font-black py-5 px-10 rounded-2xl shadow-xl hover:bg-teal-800 transition-all text-center text-lg tracking-[0.2em]">講話を聴く</a>
+                                        <a href="#info" className="bg-white text-teal-800 border-2 border-teal-200 font-black py-5 px-10 rounded-2xl shadow-md hover:bg-teal-50 transition-all text-center text-lg tracking-[0.2em]">教室案内</a>
                                     </div>
                                 </div>
                                 <div className="hidden lg:block">
-                                    <img src="https://github.com/yoshi0213saku-spec/my-images/blob/main/taichi_top02.png?raw=true" alt="練習風景" className="rounded-[3rem] shadow-2xl border-4 border-white" />
+                                    <div className="relative">
+                                        <div className="absolute -inset-4 bg-teal-100/40 rounded-[3.5rem] rotate-1"></div>
+                                        <img src="https://github.com/yoshi0213saku-spec/my-images/blob/main/taichi_top02.png?raw=true" alt="練習風景" className="relative rounded-[3rem] shadow-2xl border-4 border-white object-cover" />
+                                    </div>
                                 </div>
                             </div>
                         </section>
 
-                        {/* About */}
-                        <section id="about" className="py-24 bg-white">
-                            <div className="container mx-auto px-6 max-w-4xl">
-                                <h2 className="text-3xl md:text-5xl font-black font-serif text-teal-800 mb-12 text-center uppercase tracking-widest">どんぐりの会の想い</h2>
-                                <div className="grid md:grid-cols-2 gap-12 reveal">
-                                    <div className="space-y-6 text-slate-600 leading-loose">
+                        {/* About Section */}
+                        <section id="about" className="py-28 bg-white">
+                            <div className="container mx-auto px-6 max-w-5xl">
+                                <h2 className="text-4xl md:text-6xl font-black font-serif text-teal-800 mb-16 text-center uppercase tracking-[0.2em] border-b-4 border-teal-50 pb-8 inline-block w-full">どんぐりの会の想い</h2>
+                                <div className="grid md:grid-cols-2 gap-16 reveal">
+                                    <div className="space-y-8 text-slate-900 text-lg md:text-xl leading-loose font-black">
                                         <p>「どんぐりの会」という名前には、小さなどんぐりが大樹になるように、一歩一歩の積み重ねを大切にしたいという想いが込められています。</p>
                                         <p>自分の身体と向き合い、呼吸を整え、心の静寂を見つける道。佐藤先生の温かな指導のもと、それぞれのペースで歩んでいます。</p>
                                     </div>
-                                    <div className="bg-teal-50 p-8 rounded-[3rem] border border-teal-100 text-slate-700">
-                                        <h4 className="font-serif font-bold text-teal-800 text-xl mb-4">こんな方におすすめ</h4>
-                                        <ul className="space-y-3 font-bold">
-                                            <li>✔ 姿勢や呼吸を整えたい</li>
-                                            <li>✔ 日常の喧騒から離れ、集中したい</li>
-                                            <li>✔ 仲間と一緒に楽しみながら歩みたい</li>
+                                    <div className="bg-teal-50 p-10 rounded-[3rem] border-2 border-teal-100 text-slate-900 shadow-md">
+                                        <h4 className="font-serif font-black text-teal-900 text-2xl mb-8">こんな方におすすめ</h4>
+                                        <ul className="space-y-6 text-xl font-black">
+                                            <li className="flex items-start gap-3"><span className="text-teal-700">✔</span> 姿勢や呼吸を整えたい</li>
+                                            <li className="flex items-start gap-3"><span className="text-teal-700">✔</span> 日常の喧騒から離れ、集中したい</li>
+                                            <li className="flex items-start gap-3"><span className="text-teal-700">✔</span> 仲間と一緒に楽しみながら歩みたい</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </section>
 
-                        {/* Instructor */}
-                        <section id="instructor" className="py-24 bg-slate-50 border-y border-teal-50">
+                        {/* Instructor Section */}
+                        <section id="instructor" className="py-28 bg-slate-50 border-y-2 border-slate-100">
                             <div className="container mx-auto px-6 max-w-4xl">
-                                <h2 className="text-3xl md:text-5xl font-black font-serif text-teal-800 mb-12 text-center uppercase tracking-widest">講師紹介</h2>
-                                <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-sm border border-slate-100 reveal max-w-3xl mx-auto">
-                                    <div className="text-center md:text-left mb-8">
-                                        <h3 className="text-3xl md:text-4xl font-black font-serif text-slate-800 inline-block">佐藤 光代</h3>
-                                        <span className="text-xl font-normal text-slate-500 ml-3 font-serif">先生</span>
+                                <h2 className="text-4xl md:text-6xl font-black font-serif text-teal-800 mb-16 text-center uppercase tracking-[0.2em]">講師紹介</h2>
+                                <div className="bg-white rounded-[3.5rem] p-10 md:p-16 shadow-xl border-2 border-slate-200 reveal">
+                                    <div className="text-center md:text-left mb-12 border-b-2 border-slate-50 pb-10">
+                                        <h3 className="text-5xl md:text-6xl font-black font-serif text-slate-900 inline-block tracking-tighter">佐藤 光代</h3>
+                                        <span className="text-2xl font-black text-slate-500 ml-4 font-serif">先生</span>
                                     </div>
-                                    <div className="bg-teal-50/50 p-6 rounded-2xl border border-teal-100 mb-8 shadow-inner">
-                                        <p className="text-slate-700 leading-relaxed font-bold text-lg">
+                                    <div className="bg-teal-50 p-10 rounded-3xl border-2 border-teal-200 mb-12 shadow-inner">
+                                        <p className="text-slate-900 leading-relaxed font-black text-2xl md:text-3xl">
                                             全ての講話録を読み込んだAIが、佐藤先生という人物をひも解きます。
                                         </p>
                                     </div>
-                                    <div className="pt-6 border-t border-slate-100">
-                                        <p className="text-[11px] font-bold text-teal-700 uppercase tracking-[0.2em] mb-4">音声データ Mp3：talk-sato01</p>
-                                        <audio controls src={`${BASE_ASSETS_URL}talk-sato01.mp3`}></audio>
+                                    <div className="space-y-8">
+                                        <div className="flex items-center gap-4">
+                                            <div className="w-2.5 h-8 bg-teal-600 rounded-full"></div>
+                                            <p className="text-[14px] font-black text-teal-900 uppercase tracking-[0.3em]">音声データ Mp3：talk-sato01</p>
+                                        </div>
+                                        <audio controls src={`${BASE_ASSETS_URL}talk-sato01.mp3`} className="shadow-xl"></audio>
                                     </div>
                                 </div>
                             </div>
                         </section>
 
-                        {/* Info */}
-                        <section id="info" className="py-24 bg-white">
-                            <div className="container mx-auto px-6 max-w-4xl text-center">
-                                <h2 className="text-3xl md:text-5xl font-black font-serif text-teal-800 mb-12 uppercase tracking-widest">教室案内</h2>
-                                <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm border border-slate-100 space-y-12 text-left max-w-2xl mx-auto reveal">
-                                    <div>
-                                        <h4 className="text-teal-700 font-bold mb-2 uppercase text-xs tracking-widest">スケジュール</h4>
-                                        <p className="text-xl font-serif font-bold text-slate-800">毎週火曜日 13:30 〜 15:30</p>
+                        {/* Info Section */}
+                        <section id="info" className="py-28 bg-white">
+                            <div className="container mx-auto px-6 max-w-5xl text-center">
+                                <h2 className="text-4xl md:text-6xl font-black font-serif text-teal-800 mb-20 uppercase tracking-[0.2em]">教室案内</h2>
+                                <div className="bg-white rounded-[4rem] p-12 md:p-20 shadow-2xl border-4 border-teal-50 space-y-20 text-left max-w-3xl mx-auto reveal relative overflow-hidden">
+                                    <div className="relative z-10">
+                                        <h4 className="text-teal-700 font-black mb-6 uppercase text-sm tracking-[0.3em] flex items-center gap-3">
+                                            <span className="w-10 h-[3px] bg-teal-300"></span> スケジュール
+                                        </h4>
+                                        <p className="text-3xl md:text-4xl font-serif font-black text-slate-900 ml-6">毎週火曜日 13:30 〜 15:30</p>
                                     </div>
-                                    <div>
-                                        <h4 className="text-teal-700 font-bold mb-3 uppercase text-xs tracking-widest">会場予定表</h4>
-                                        <a href="venue_schedule_2026.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-4 bg-teal-50 border border-teal-200 rounded-2xl text-teal-800 font-bold hover:bg-teal-100 transition-all shadow-sm">
-                                            <svg className="h-5 w-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                            <span className="font-serif font-bold text-sm md:text-base">2026年2月・3月 会場表（PDF）を表示</span>
+                                    <div className="relative z-10">
+                                        <h4 className="text-teal-700 font-black mb-8 uppercase text-sm tracking-[0.3em] flex items-center gap-3">
+                                            <span className="w-10 h-[3px] bg-teal-300"></span> 会場予定表
+                                        </h4>
+                                        <a href="venue_schedule_2026.pdf" target="_blank" rel="noopener noreferrer" className="ml-6 inline-flex items-center gap-5 px-10 py-6 bg-teal-700 border-2 border-teal-600 rounded-2xl text-white font-black hover:bg-teal-800 transition-all shadow-xl group">
+                                            <svg className="h-8 w-8 text-teal-100 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                            <span className="font-serif font-black text-xl md:text-2xl">2026年 会場表（PDF）を表示</span>
                                         </a>
                                     </div>
-                                    <div>
-                                        <h4 className="text-teal-700 font-bold mb-2 uppercase text-xs tracking-widest">会場</h4>
-                                        <p className="text-xl font-serif font-bold text-slate-800">東御市中央公民館（3階講堂他）</p>
-                                        <p className="text-lg font-sans text-slate-700 font-bold mt-2 uppercase">TEL 0268 75 5506</p>
+                                    <div className="relative z-10">
+                                        <h4 className="text-teal-700 font-black mb-6 uppercase text-sm tracking-[0.3em] flex items-center gap-3">
+                                            <span className="w-10 h-[3px] bg-teal-300"></span> 会場
+                                        </h4>
+                                        <p className="text-3xl md:text-4xl font-serif font-black text-slate-900 ml-6">東御市中央公民館（3階講堂他）</p>
+                                        <p className="text-2xl font-sans text-slate-800 font-black mt-4 ml-6 border-l-8 border-teal-100 pl-6 uppercase tracking-widest">TEL 0268 75 5506</p>
                                     </div>
-                                    <div>
-                                        <h4 className="text-teal-700 font-bold mb-2 uppercase text-xs tracking-widest">会費</h4>
-                                        <p className="text-xl font-serif font-bold text-slate-800">2,000円 <span className="text-sm font-normal opacity-50 font-sans ml-1">/ 月額</span></p>
+                                    <div className="relative z-10">
+                                        <h4 className="text-teal-700 font-black mb-6 uppercase text-sm tracking-[0.3em] flex items-center gap-3">
+                                            <span className="w-10 h-[3px] bg-teal-300"></span> 会費
+                                        </h4>
+                                        <p className="text-3xl md:text-4xl font-serif font-black text-slate-900 ml-6">2,000円 <span className="text-xl font-bold opacity-60 font-sans ml-3">/ 月額</span></p>
                                     </div>
                                 </div>
                             </div>
                         </section>
 
                         {/* Talk Section */}
-                        <section id="talk" className="py-24 bg-slate-50 text-center">
+                        <section id="talk" className="py-28 bg-slate-100 border-y-2 border-slate-200">
                             <div className="container mx-auto px-6 max-w-6xl">
-                                <h2 className="text-3xl md:text-5xl font-black font-serif text-teal-800 mb-12 uppercase tracking-widest">佐藤先生の講話</h2>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal text-left">
+                                <h2 className="text-4xl md:text-6xl font-black font-serif text-teal-800 mb-10 uppercase tracking-[0.25em] text-center">佐藤先生の講話</h2>
+                                <p className="text-slate-900 mb-20 max-w-4xl mx-auto text-xl md:text-2xl leading-relaxed font-black px-4 text-center">
+                                    会場予定表と共に掲載されている先生の貴重なお言葉を、いつでもどこでも学習できる音声データの講話にしました。<br className="hidden md:block" />
+                                    初回は2024年1月からです。
+                                </p>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 reveal">
                                     {talkData.map((t, idx) => (
-                                        <div key={idx} className="talk-card flex flex-col justify-between">
+                                        <div key={idx} className="talk-card flex flex-col justify-between h-full bg-white border-2 border-slate-300">
                                             <div>
-                                                <span className="text-[10px] font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-4 inline-block uppercase">{t.date}</span>
-                                                <h4 className="font-bold text-slate-800 text-lg mb-6 font-serif">{t.title}</h4>
+                                                <span className="text-[13px] font-black text-white bg-teal-700 px-5 py-1.5 rounded-full mb-8 inline-block uppercase tracking-[0.2em] shadow-md">{t.date}</span>
+                                                <h4 className="font-black text-slate-900 text-2xl md:text-3xl mb-10 font-serif leading-tight">{t.title}</h4>
                                             </div>
                                             <audio controls src={`${BASE_ASSETS_URL}talk${t.date.replace('.', '')}.mp3`}></audio>
                                         </div>
@@ -235,61 +270,68 @@
                             </div>
                         </section>
 
-                        {/* AI Digital Study */}
-                        <section id="admin" className="py-24 bg-white border-t border-slate-100">
-                            <div className="container mx-auto px-6 max-w-4xl">
-                                <h2 className="text-3xl md:text-5xl font-black font-serif text-teal-800 mb-12 text-center uppercase tracking-widest reveal">
+                        {/* AI Digital Study Section */}
+                        <section id="admin" className="py-28 bg-white">
+                            <div className="container mx-auto px-6 max-w-5xl">
+                                <h2 className="text-4xl md:text-6xl font-black font-serif text-teal-800 mb-20 text-center uppercase tracking-[0.2em] border-b-8 border-teal-50 pb-10 inline-block w-full reveal">
                                     AIデジタル書斎
                                 </h2>
                                 
-                                <div className="flex flex-col gap-12 reveal">
-                                    <div className="space-y-8">
-                                        <p className="text-xl font-serif font-bold text-slate-800 border-b border-teal-50 pb-4">
+                                <div className="flex flex-col gap-16 reveal">
+                                    <div className="space-y-12">
+                                        <p className="text-3xl md:text-4xl font-serif font-black text-slate-900 border-l-[12px] border-teal-700 pl-8 py-4 bg-teal-50 rounded-r-3xl shadow-sm">
                                             知識の海を、AIと共に歩む。
-                                            <span className="text-xs font-sans font-normal opacity-50 font-bold ml-2 uppercase tracking-normal">(NotebookLMの活用)</span>
+                                            <span className="text-base font-black text-teal-800 ml-6 uppercase tracking-widest">(NotebookLMの活用)</span>
                                         </p>
                                         
-                                        <div className="grid gap-8">
+                                        <div className="grid gap-12">
                                             <StudyCard title="【AI音声ガイド】" subtitle="王宋岳・腸腰筋と地面反力で放つ究極の勁力" file="talk-osougaku-han01.mp3" />
                                             <StudyCard title="【AI音声ガイド】" subtitle="馬長勲老師の資料から探る「勁」「推手」、伝承の核心" file="talk-batyokun01.mp3" />
                                             
-                                            <div className="bg-slate-50 p-6 md:p-8 rounded-[2rem] border border-slate-100">
-                                                <div className="mb-4 flex items-center gap-2">
-                                                    <div className="w-1 h-5 bg-teal-600 rounded-full"></div>
-                                                    <p className="font-bold text-base text-slate-900 uppercase tracking-widest font-serif">【AI動画ガイド】</p>
+                                            <div className="bg-slate-50 p-12 rounded-[4rem] border-2 border-slate-300 shadow-sm transition-all hover:shadow-lg">
+                                                <div className="mb-8 flex items-center gap-4">
+                                                    <div className="w-3 h-9 bg-red-600 rounded-full"></div>
+                                                    <p className="font-black text-2xl text-slate-900 uppercase tracking-widest font-serif">【AI動画ガイド】</p>
                                                 </div>
-                                                <p className="mb-6 text-slate-700 font-bold font-serif text-xl leading-relaxed">太極拳「心地よい力」のパラドックス</p>
-                                                <a href="https://youtu.be/acOhVIgnBt4" target="_blank" className="inline-flex items-center gap-2 px-6 py-2.5 bg-red-600 text-white rounded-full text-xs font-bold hover:bg-red-700 transition-all shadow-md uppercase">
-                                                    YouTube
+                                                <p className="mb-12 text-slate-900 font-black font-serif text-3xl leading-relaxed">太極拳「心地よい力」のパラドックス</p>
+                                                <a href="https://youtu.be/acOhVIgnBt4" target="_blank" className="inline-flex items-center gap-5 px-10 py-5 bg-red-600 text-white rounded-2xl text-xl font-black hover:bg-red-700 transition-all shadow-xl uppercase tracking-widest group">
+                                                    <svg className="w-8 h-8 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                                    YouTubeで学ぶ
                                                 </a>
                                             </div>
 
-                                            <div className="bg-slate-50 p-6 md:p-8 rounded-[2rem] border border-slate-100">
-                                                <div className="mb-4 flex items-center gap-2">
-                                                    <div className="w-1 h-5 bg-teal-600 rounded-full"></div>
-                                                    <p className="font-bold text-base text-slate-900 uppercase tracking-widest font-serif">【AI動画ガイド】</p>
+                                            <div className="bg-slate-50 p-12 rounded-[4rem] border-2 border-slate-300 shadow-sm transition-all hover:shadow-lg">
+                                                <div className="mb-8 flex items-center gap-4">
+                                                    <div className="w-3 h-9 bg-red-600 rounded-full"></div>
+                                                    <p className="font-black text-2xl text-slate-900 uppercase tracking-widest font-serif">【AI動画ガイド】</p>
                                                 </div>
-                                                <p className="mb-6 text-slate-700 font-bold font-serif text-xl leading-relaxed">太極拳の魂：達人の対話から学ぶ知恵</p>
-                                                <a href="https://youtu.be/93PgtANrUMk" target="_blank" className="inline-flex items-center gap-2 px-6 py-2.5 bg-red-600 text-white rounded-full text-xs font-bold hover:bg-red-700 transition-all shadow-md uppercase">
-                                                    YouTube
+                                                <p className="mb-12 text-slate-900 font-black font-serif text-3xl leading-relaxed">太極拳の魂：達人の対話から学ぶ知恵</p>
+                                                <a href="https://youtu.be/93PgtANrUMk" target="_blank" className="inline-flex items-center gap-5 px-10 py-5 bg-red-600 text-white rounded-2xl text-xl font-black hover:bg-red-700 transition-all shadow-xl uppercase tracking-widest group">
+                                                    <svg className="w-8 h-8 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                                    YouTubeで学ぶ
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="w-16 h-px bg-teal-200 opacity-40 my-4"></div>
-
-                                    <div className="bg-white p-8 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm">
-                                        <h4 className="text-teal-700 font-bold mb-6 uppercase text-[10px] tracking-[0.2em]">ホームページ運営責任者</h4>
-                                        <div className="space-y-4">
-                                            <p className="text-2xl font-serif font-bold text-slate-800 leading-none">
-                                                中島 義健 
-                                                <span className="text-sm font-sans font-normal opacity-50 font-bold ml-2">(どんぐりの会 会員)</span>
-                                            </p>
-                                            <p className="text-sm text-slate-500 font-bold leading-relaxed">日本武術太極拳連盟 太極拳3段 / B級指導員</p>
-                                            <a href="mailto:yoshi0213.saku@gmail.com" className="text-teal-700 text-xs mt-6 inline-block font-bold uppercase tracking-widest hover:text-teal-800 border-b border-teal-100 pb-0.5">
-                                                yoshi0213.saku@gmail.com
-                                            </a>
+                                    {/* Responsible Admin Section */}
+                                    <div className="mt-20 bg-slate-900 p-12 md:p-20 rounded-[5rem] text-white shadow-2xl relative overflow-hidden border-4 border-teal-900/30">
+                                        <div className="absolute top-0 right-0 w-80 h-80 bg-teal-500/10 rounded-full -mr-40 -mt-40"></div>
+                                        <div className="relative z-10">
+                                            <h4 className="text-teal-400 font-black mb-12 uppercase text-[14px] tracking-[0.4em]">ホームページ運営責任者</h4>
+                                            <div className="space-y-12">
+                                                <p className="text-5xl md:text-6xl font-serif font-black flex flex-wrap items-baseline gap-6">
+                                                    中島 義健 
+                                                    <span className="text-2xl font-sans font-bold text-slate-400 tracking-normal">(どんぐりの会 会員)</span>
+                                                </p>
+                                                <div className="space-y-4 border-l-8 border-teal-600 pl-10 py-2">
+                                                    <p className="text-2xl md:text-3xl font-black text-slate-50 tracking-wide">日本武術太極拳連盟 太極拳3段</p>
+                                                    <p className="text-2xl md:text-3xl font-black text-slate-50 tracking-wide">B級指導員</p>
+                                                </div>
+                                                <a href="mailto:yoshi0213.saku@gmail.com" className="inline-block text-teal-400 text-2xl font-black border-b-4 border-teal-500/20 pb-2 hover:text-white hover:border-white transition-all tracking-wider">
+                                                    yoshi0213.saku@gmail.com
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -297,36 +339,38 @@
                         </section>
                     </main>
 
-                    <footer className="py-12 bg-white text-center border-t border-slate-100">
+                    {/* Footer */}
+                    <footer className="py-20 bg-white text-center border-t-4 border-slate-100">
                         <div className="container mx-auto px-6">
-                            <div className="flex items-center justify-center gap-4 mb-4 flex-wrap">
-                                <div className="flex items-center gap-2">
-                                    <svg width="24" height="24" viewBox="0 0 100 100" className="text-teal-800 opacity-50"><circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="4" fill="none"/><path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/></svg>
-                                    <span className="text-xl font-black font-serif uppercase tracking-widest text-slate-800">Tai Chi <span className="text-teal-700">Donguri</span></span>
+                            <div className="flex flex-col md:flex-row items-center justify-center gap-10 mb-10">
+                                <div className="flex items-center gap-4">
+                                    <svg width="36" height="36" viewBox="0 0 100 100" className="text-teal-800 opacity-90"><circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="8" fill="none"/><path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/></svg>
+                                    <span className="text-3xl font-black font-serif uppercase tracking-[0.3em] text-slate-900">Tai Chi <span className="text-teal-700">Donguri</span></span>
                                 </div>
-                                <div className="opacity-40 text-[9px] font-mono border-l border-slate-200 pl-3 uppercase font-bold">
-                                    Visitors: {visitorCount.toString().padStart(4, '0')}
+                                <div className="hidden md:block w-px h-10 bg-slate-200"></div>
+                                <div className="text-[13px] font-mono text-slate-600 uppercase font-black tracking-[0.3em] bg-slate-50 px-8 py-3 rounded-full border-2 border-slate-100 shadow-inner">
+                                    Total Visitors: <span className="text-teal-700 font-bold">{visitorCount.toString().padStart(6, '0')}</span>
                                 </div>
                             </div>
-                            <p className="text-[10px] tracking-widest opacity-40 uppercase font-bold">© 太極拳どんぐりの会 - Tomi-City</p>
+                            <p className="text-[12px] tracking-[0.4em] text-slate-500 uppercase font-black">© 太極拳どんぐりの会 - Tomi-City, Nagano</p>
                         </div>
                     </footer>
                 </div>
             );
         }
 
-        function StudyCard({ title, subtitle, file }) {
-            return (
-                <div className="bg-slate-50 p-6 md:p-8 rounded-[2rem] border border-slate-100">
-                    <div className="mb-4 flex items-center gap-2">
-                        <div className="w-1 h-5 bg-teal-600 rounded-full"></div>
-                        <p className="font-bold text-base text-slate-900 uppercase tracking-widest font-serif">{title}</p>
+            function StudyCard({ title, subtitle, file }) {
+                return (
+                    <div className="bg-slate-50 p-12 rounded-[4rem] border-2 border-slate-300 shadow-sm transition-all hover:border-teal-300 hover:shadow-md">
+                        <div className="mb-8 flex items-center gap-4">
+                            <div className="w-3 h-9 bg-teal-600 rounded-full"></div>
+                            <p className="font-black text-2xl text-slate-900 uppercase tracking-widest font-serif">{title}</p>
+                        </div>
+                        <p className="mb-12 text-slate-900 font-black font-serif text-3xl leading-relaxed">{subtitle}</p>
+                        <audio controls className="max-w-md w-full shadow-xl rounded-full" src={`${BASE_ASSETS_URL}${file}`}></audio>
                     </div>
-                    <p className="mb-6 text-slate-700 font-bold font-serif text-xl leading-relaxed">{subtitle}</p>
-                    <audio controls className="max-w-md w-full shadow-sm rounded-full" src={`${BASE_ASSETS_URL}${file}`}></audio>
-                </div>
-            );
-        }
+                );
+            }
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
