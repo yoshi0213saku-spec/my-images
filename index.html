@@ -30,6 +30,10 @@
         }
         .talk-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1); border-color: var(--brand-teal); }
         audio { width: 100%; height: 32px; border-radius: 99px; }
+        
+        /* Mobile Menu Animation */
+        .mobile-menu { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .mobile-menu.open { transform: translateX(0); }
     </style>
 </head>
 <body>
@@ -38,8 +42,6 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // Firebase Mock/Stub for local preview if config is missing
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'donguri-default';
         const BASE_ASSETS_URL = "https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/";
 
         function App() {
@@ -49,7 +51,6 @@
             useEffect(() => {
                 document.title = "太極拳どんぐりの会 （個人ページ）";
                 
-                // Reveal Animation logic
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) entry.target.classList.add('active');
@@ -57,8 +58,7 @@
                 }, { threshold: 0.1 });
                 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
                 
-                // Dummy visitor count for standalone preview
-                setVisitorCount(Math.floor(Math.random() * 50) + 1200);
+                setVisitorCount(Math.floor(Math.random() * 50) + 1240);
             }, []);
 
             const talkData = [
@@ -79,22 +79,24 @@
             ];
 
             return (
-                <div className="antialiased text-left font-sans bg-[#fdfdfb] scroll-smooth">
+                <div className="antialiased text-left font-sans bg-[#fdfdfb] scroll-smooth overflow-x-hidden">
                     {/* Header */}
                     <header className="fixed w-full z-40 bg-white/90 backdrop-blur-md border-b border-teal-50">
                         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-                            <a href="#" className="flex items-center gap-3">
-                                <svg width="32" height="32" viewBox="0 0 100 100" className="text-teal-800">
+                            <a href="#" className="flex items-center gap-2 md:gap-3">
+                                <svg width="28" height="28" viewBox="0 0 100 100" className="text-teal-800 flex-shrink-0">
                                     <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="2" fill="none"/>
                                     <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2" fill="currentColor"/>
                                     <circle cx="50" cy="26" r="6" fill="white"/>
                                     <circle cx="50" cy="74" r="6" fill="currentColor"/>
                                 </svg>
-                                <span className="text-xl md:text-2xl font-black font-serif text-teal-800 uppercase flex items-baseline gap-1">
+                                <span className="text-lg md:text-2xl font-black font-serif text-teal-800 uppercase flex items-baseline gap-1">
                                     太極拳どんぐりの会
-                                    <span className="text-xs md:text-sm font-sans font-bold opacity-40">（個人ページ）</span>
+                                    <span className="text-[10px] md:text-sm font-sans font-bold normal-case opacity-40 whitespace-nowrap">（個人ページ）</span>
                                 </span>
                             </a>
+                            
+                            {/* Desktop Nav */}
                             <nav className="hidden lg:flex items-center gap-6 text-[11px] font-bold text-slate-500 tracking-widest uppercase">
                                 <a href="#about" className="hover:text-teal-700 transition-colors">想い</a>
                                 <a href="#instructor" className="hover:text-teal-700 transition-colors">講師紹介</a>
@@ -102,19 +104,42 @@
                                 <a href="#talk" className="hover:text-teal-700 transition-colors">佐藤先生の講話</a>
                                 <a href="#admin" className="hover:text-teal-700 transition-colors whitespace-nowrap">AIデジタル書斎</a>
                             </nav>
+
+                            {/* Mobile Menu Toggle */}
+                            <button onClick={() => setIsMenuOpen(true)} className="lg:hidden p-2 text-slate-800">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                                </svg>
+                            </button>
                         </div>
                     </header>
+
+                    {/* Mobile Menu Overlay */}
+                    <div className={`fixed inset-0 z-50 bg-white mobile-menu ${isMenuOpen ? 'open' : ''} lg:hidden flex flex-col p-8`}>
+                        <button onClick={() => setIsMenuOpen(false)} className="self-end p-2 text-slate-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <nav className="flex flex-col gap-6 mt-12 text-center text-xl font-serif text-slate-800 font-bold">
+                            <a href="#about" onClick={() => setIsMenuOpen(false)}>想い</a>
+                            <a href="#instructor" onClick={() => setIsMenuOpen(false)}>講師紹介</a>
+                            <a href="#info" onClick={() => setIsMenuOpen(false)}>教室案内</a>
+                            <a href="#talk" onClick={() => setIsMenuOpen(false)}>佐藤先生の講話</a>
+                            <a href="#admin" onClick={() => setIsMenuOpen(false)}>AIデジタル書斎</a>
+                        </nav>
+                    </div>
 
                     <main>
                         {/* Hero */}
                         <section className="hero-gradient min-h-[80vh] flex items-center pt-24">
                             <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
                                 <div className="reveal">
-                                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 border border-teal-100 rounded-full text-teal-800 text-[11px] font-bold mb-6">長野県東御市 中央公民館にて活動中</div>
+                                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 border border-teal-100 rounded-full text-teal-800 text-[10px] md:text-[11px] font-bold mb-6">長野県東御市 中央公民館にて活動中</div>
                                     <h1 className="text-4xl md:text-7xl font-black text-slate-900 leading-tight mb-8 font-serif">しなやかに整えて、<br/><span className="text-teal-700">心から笑う。</span></h1>
                                     <p className="text-slate-600 text-lg mb-10 leading-relaxed max-w-lg">太極拳どんぐりの会は、伝統的な太極拳の教えを大切にしながら、健やかな身体と穏やかな心を育む場です。</p>
                                     <div className="flex gap-4">
-                                        <a href="#talk" className="bg-teal-700 text-white font-bold py-4 px-8 rounded-2xl shadow-xl hover:bg-teal-800 transition-all">講話を聴く</a>
+                                        <a href="#talk" className="bg-teal-700 text-white font-bold py-4 px-8 rounded-2xl shadow-xl hover:bg-teal-800 transition-all text-center">講話を聴く</a>
                                     </div>
                                 </div>
                                 <div className="hidden lg:block">
@@ -178,8 +203,8 @@
                                     <div>
                                         <h4 className="text-teal-700 font-bold mb-3 uppercase text-xs tracking-widest">会場予定表</h4>
                                         <a href={`${BASE_ASSETS_URL}venue_schedule_2026.pdf`} target="_blank" className="inline-flex items-center gap-3 px-6 py-4 bg-teal-50 border border-teal-200 rounded-2xl text-teal-800 font-bold hover:bg-teal-100 transition-all shadow-sm">
-                                            <svg className="h-5 w-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                            <span className="font-serif font-bold">2026年2月・3月 会場表（PDF）を表示</span>
+                                            <svg className="h-5 w-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                            <span className="font-serif font-bold text-sm md:text-base">2026年2月・3月 会場表（PDF）を表示</span>
                                         </a>
                                     </div>
                                     <div>
