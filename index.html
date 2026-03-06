@@ -58,7 +58,7 @@
                 }, { threshold: 0.1 });
                 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
                 
-                setVisitorCount(Math.floor(Math.random() * 50) + 1240);
+                setVisitorCount(Math.floor(Math.random() * 50) + 1255);
             }, []);
 
             const talkData = [
@@ -139,7 +139,7 @@
                                     <h1 className="text-4xl md:text-7xl font-black text-slate-900 leading-tight mb-8 font-serif">しなやかに整えて、<br/><span className="text-teal-700">心から笑う。</span></h1>
                                     <p className="text-slate-600 text-lg mb-10 leading-relaxed max-w-lg">太極拳どんぐりの会は、伝統的な太極拳の教えを大切にしながら、健やかな身体と穏やかな心を育む場です。</p>
                                     <div className="flex gap-4">
-                                        <a href="#talk" className="bg-teal-700 text-white font-bold py-4 px-8 rounded-2xl shadow-xl hover:bg-teal-800 transition-all text-center">講話を聴く</a>
+                                        <a href="#talk" className="bg-teal-700 text-white font-bold py-4 px-8 rounded-2xl shadow-xl hover:bg-teal-800 transition-all text-center text-sm md:text-base">講話を聴く</a>
                                     </div>
                                 </div>
                                 <div className="hidden lg:block">
@@ -256,6 +256,17 @@
                                             <StudyCard title="【AI音声ガイド】" subtitle="王宋岳・腸腰筋と地面反力で放つ究極の勁力" file="talk-osougaku-han01.mp3" />
                                             <StudyCard title="【AI音声ガイド】" subtitle="馬長勲老師の資料から探る「勁」「推手」、伝承の核心" file="talk-batyokun01.mp3" />
                                             
+                                            <div className="bg-slate-50 p-6 md:p-8 rounded-[2rem] border border-slate-100">
+                                                <div className="mb-4 flex items-center gap-2">
+                                                    <div className="w-1 h-5 bg-teal-600 rounded-full"></div>
+                                                    <p className="font-bold text-base text-slate-900 uppercase tracking-widest font-serif">【AI動画ガイド】</p>
+                                                </div>
+                                                <p className="mb-6 text-slate-700 font-bold font-serif text-xl leading-relaxed">太極拳「心地よい力」のパラドックス</p>
+                                                <a href="https://youtu.be/acOhVIgnBt4" target="_blank" className="inline-flex items-center gap-2 px-6 py-2.5 bg-red-600 text-white rounded-full text-xs font-bold hover:bg-red-700 transition-all shadow-md uppercase">
+                                                    YouTube
+                                                </a>
+                                            </div>
+
                                             <div className="bg-slate-50 p-6 md:p-8 rounded-[2rem] border border-slate-100">
                                                 <div className="mb-4 flex items-center gap-2">
                                                     <div className="w-1 h-5 bg-teal-600 rounded-full"></div>
