@@ -359,7 +359,8 @@
                         <div className="w-1.5 h-5 bg-red-600 rounded-full"></div>
                         <p className="font-black text-sm text-slate-900 uppercase tracking-widest font-serif">【AI動画ガイド】</p>
                     </div>
-                    <p className="mb-8 text-slate-900 font-black font-serif text-base md:text-lg leading-relaxed h-10 overflow-hidden">{title}</p>
+                    {/* 修正箇所: h-10 overflow-hidden を削除し、スマートフォンの改行に対応 */}
+                    <p className="mb-8 text-slate-900 font-black font-serif text-base md:text-lg leading-relaxed min-h-[3rem]">{title}</p>
                     <a href={url} target="_blank" className="inline-flex items-center gap-3 px-5 py-2.5 bg-red-600 text-white rounded-full text-[10px] font-black hover:bg-red-700 transition-all shadow-md uppercase tracking-widest">
                         <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93 snowy-red-600.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                         YOUTUBEで視聴する
