@@ -277,9 +277,11 @@
                                         </p>
                                         
                                         <div className="grid gap-8">
+                                            {/* 1. AI Voice Guide */}
                                             <StudyCard title="【AI音声ガイド】" subtitle="王宋岳・腸腰筋と地面反力で放つ究極の勁力" file="talk-osougaku-han01.mp3" />
                                             <StudyCard title="【AI音声ガイド】" subtitle="馬長勲老師の資料から探る「勁」「推手」、伝承の核心" file="talk-batyokun01.mp3" />
                                             
+                                            {/* 2. AI Video Guide */}
                                             <div className="grid md:grid-cols-2 gap-8">
                                                 <SimpleVideoBlock 
                                                     title="太極拳「心地よい力」のパラドックス" 
@@ -289,6 +291,18 @@
                                                     title="太極拳の魂：達人の対話から学ぶ知恵" 
                                                     url="https://youtu.be/93PgtANrUMk" 
                                                 />
+                                            </div>
+
+                                            {/* 3. AI PDF Guide */}
+                                            <div className="bg-slate-50/80 p-6 rounded-[2rem] border border-slate-200 shadow-sm transition-all hover:border-teal-200">
+                                                <div className="mb-4 flex items-center gap-2">
+                                                    <div className="w-1.5 h-5 bg-teal-600 rounded-full"></div>
+                                                    <p className="font-black text-sm text-slate-900 uppercase tracking-widest font-serif text-[0.9em]">【AI PDFガイド】</p>
+                                                </div>
+                                                <p className="mb-8 text-slate-900 font-black font-serif text-base md:text-lg leading-relaxed">佐藤先生推手の資料 20240324</p>
+                                                <a href="https://yoshi0213saku-spec.github.io/sato-suisyu04/" target="_blank" className="inline-flex items-center gap-3 px-6 py-3 bg-teal-700 text-white rounded-full text-[10px] font-black hover:bg-teal-800 transition-all shadow-md uppercase tracking-widest">
+                                                    資料を表示する
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -344,7 +358,7 @@
                 <div className="bg-slate-50/80 p-6 rounded-[2rem] border border-slate-200 shadow-sm transition-all hover:border-teal-200">
                     <div className="mb-4 flex items-center gap-2">
                         <div className="w-1.5 h-5 bg-teal-600 rounded-full"></div>
-                        <p className="font-black text-sm text-slate-900 uppercase tracking-widest font-serif">{title}</p>
+                        <p className="font-black text-sm text-slate-900 uppercase tracking-widest font-serif text-[0.9em]">{title}</p>
                     </div>
                     <p className="mb-6 text-slate-900 font-black font-serif text-base md:text-lg leading-relaxed">{subtitle}</p>
                     <audio controls className="max-w-md w-full shadow-md rounded-full" src={`${BASE_ASSETS_URL}${file}`}></audio>
@@ -357,9 +371,8 @@
                 <div className="bg-slate-50/80 p-6 rounded-[2rem] border border-slate-200 shadow-sm transition-all hover:border-red-200">
                     <div className="mb-4 flex items-center gap-2">
                         <div className="w-1.5 h-5 bg-red-600 rounded-full"></div>
-                        <p className="font-black text-sm text-slate-900 uppercase tracking-widest font-serif">【AI動画ガイド】</p>
+                        <p className="font-black text-sm text-slate-900 uppercase tracking-widest font-serif text-[0.9em]">【AI動画ガイド】</p>
                     </div>
-                    {/* 修正箇所: h-10 overflow-hidden を削除し、スマートフォンの改行に対応 */}
                     <p className="mb-8 text-slate-900 font-black font-serif text-base md:text-lg leading-relaxed min-h-[3rem]">{title}</p>
                     <a href={url} target="_blank" className="inline-flex items-center gap-3 px-5 py-2.5 bg-red-600 text-white rounded-full text-[10px] font-black hover:bg-red-700 transition-all shadow-md uppercase tracking-widest">
                         <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93 snowy-red-600.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
