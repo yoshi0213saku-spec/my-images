@@ -293,8 +293,11 @@
                                         
                                         <div className="grid gap-8">
                                             {/* 1. AI Voice Guide */}
-                                            <StudyCard title="【AI音声ガイド】" subtitle="王宋岳・腸腰筋と地面反力で放つ究極の勁力" file="talk-osougaku-han01.mp3" />
-                                            <StudyCard title="【AI音声ガイド】" subtitle="馬長勲老師の資料から探る「勁」「推手」、伝承の核心" file="talk-batyokun01.mp3" />
+                                            <div className="grid gap-6">
+                                                <StudyCard title="【AI音声ガイド】" subtitle="王宋岳・腸腰筋と地面反力で放つ究極の勁力" file="talk-osougaku-han01.mp3" />
+                                                <StudyCard title="【AI音声ガイド】" subtitle="馬長勲老師の資料から探る「勁」「推手」、伝承の核心" file="talk-batyokun01.mp3" />
+                                                <StudyCard title="【AI音声ガイド】" subtitle="馬長勲が語った太極拳の真髄と後天の本能" file="umatyokun-sinzui01.mp3" />
+                                            </div>
                                             
                                             {/* 2. AI Video Guide */}
                                             <div className="grid md:grid-cols-2 gap-8">
@@ -305,6 +308,10 @@
                                                 <SimpleVideoBlock 
                                                     title="太極拳の魂：達人の対話から学ぶ知恵" 
                                                     url="https://youtu.be/93PgtANrUMk" 
+                                                />
+                                                <SimpleVideoBlock 
+                                                    title="太極拳：力なき力の秘術" 
+                                                    url="https://youtu.be/zBiSb1nCBNM" 
                                                 />
                                             </div>
 
@@ -370,7 +377,7 @@
                                     <span className="text-xl font-black font-serif uppercase tracking-[0.2em] text-slate-900">Tai Chi <span className="text-teal-700">Donguri</span></span>
                                 </div>
                                 <div className="hidden md:block w-px h-8 bg-slate-200"></div>
-                                <div className="text-[11px] font-mono text-slate-600 uppercase font-black tracking-[0.2em] bg-slate-50 px-6 py-2 rounded-full border border-slate-100 shadow-inner">
+                                <div className="text-[11px] font-mono text-slate-600 uppercase font-black tracking-[0.3em] bg-slate-50 px-6 py-2 rounded-full border border-slate-100 shadow-inner">
                                     Total Visitors: <span className="text-teal-700 font-bold">{visitorCount.toString().padStart(6, '0')}</span>
                                 </div>
                             </div>
