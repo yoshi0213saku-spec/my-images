@@ -58,9 +58,10 @@
         const BASE_ASSETS_URL = "https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/";
         
         // PDFをブラウザでプレビューさせるためのビューアURL生成関数
+        // embedded=true を付与してアカウント確認のオーバーヘッドを減らす
         const getPdfPreviewUrl = (fileName) => {
             const fileUrl = `${BASE_ASSETS_URL}${fileName}`;
-            return `https://docs.google.com/viewer?url=${encodeURIComponent(fileUrl)}&embedded=false`;
+            return `https://docs.google.com/viewer?url=${encodeURIComponent(fileUrl)}&embedded=true`;
         };
 
         function App() {
@@ -96,7 +97,7 @@
             ];
 
             return (
-                <div className="antialiased text-left font-sans bg-[#fdfdfb] scroll-smooth overflow-x-hidden">
+                <div className="antialiased text-left font-sans bg-[#fdfdfb] scroll-smooth overflow-x-hidden text-[0.95em]">
                     {/* Header */}
                     <header className="fixed w-full z-40 bg-white/95 backdrop-blur-md border-b border-teal-100 shadow-sm">
                         <div className="container mx-auto px-6 py-2.5 flex justify-between items-center">
