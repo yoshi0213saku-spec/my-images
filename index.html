@@ -56,6 +56,12 @@
         const { useState, useEffect } = React;
 
         const BASE_ASSETS_URL = "https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/";
+        
+        // PDFをブラウザでプレビューさせるためのビューアURL生成関数
+        const getPdfPreviewUrl = (fileName) => {
+            const fileUrl = `${BASE_ASSETS_URL}${fileName}`;
+            return `https://docs.google.com/viewer?url=${encodeURIComponent(fileUrl)}&embedded=false`;
+        };
 
         function App() {
             const [visitorCount, setVisitorCount] = useState(0);
@@ -227,7 +233,7 @@
                                         <h4 className="text-teal-700 font-black mb-5 uppercase text-[10px] tracking-[0.3em] flex items-center gap-2">
                                             <span className="w-6 h-[2px] bg-teal-300"></span> 会場予定表
                                         </h4>
-                                        <a href="venue_schedule_2026.pdf" target="_blank" rel="noopener noreferrer" className="ml-4 inline-flex items-center gap-4 px-6 py-3 bg-teal-700 rounded-xl text-white font-black hover:bg-teal-800 transition-all shadow-md group text-xs md:text-sm">
+                                        <a href={getPdfPreviewUrl('venue_schedule_2026.pdf')} target="_blank" rel="noopener noreferrer" className="ml-4 inline-flex items-center gap-4 px-6 py-3 bg-teal-700 rounded-xl text-white font-black hover:bg-teal-800 transition-all shadow-md group text-xs md:text-sm">
                                             <svg className="h-5 w-5 text-teal-100 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                                             <span>2026年 会場表（PDF）を表示</span>
                                         </a>
@@ -310,7 +316,7 @@
                                                         <p className="font-black text-sm text-slate-900 uppercase tracking-widest font-serif text-[0.9em]">【AI PDFガイド】</p>
                                                     </div>
                                                     <p className="mb-8 text-slate-900 font-black font-serif text-base md:text-lg leading-relaxed text-[0.9em]">佐藤先生推手の資料 20240324</p>
-                                                    <a href={`${BASE_ASSETS_URL}sato-suisyu02.pdf`} target="_blank" className="inline-flex items-center gap-3 px-6 py-3 bg-teal-700 text-white rounded-full text-[10px] font-black hover:bg-teal-800 transition-all shadow-md uppercase tracking-widest">
+                                                    <a href={getPdfPreviewUrl('sato-suisyu02.pdf')} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-3 bg-teal-700 text-white rounded-full text-[10px] font-black hover:bg-teal-800 transition-all shadow-md uppercase tracking-widest">
                                                         資料をプレビューする
                                                     </a>
                                                 </div>
@@ -321,7 +327,7 @@
                                                         <p className="font-black text-sm text-slate-900 uppercase tracking-widest font-serif text-[0.9em]">【AI PDFガイド】</p>
                                                     </div>
                                                     <p className="mb-8 text-slate-900 font-black font-serif text-base md:text-lg leading-relaxed text-[0.9em]">佐藤先生『王宗岳の太極拳論』20260304</p>
-                                                    <a href={`${BASE_ASSETS_URL}sato-osougaku02.pdf`} target="_blank" className="inline-flex items-center gap-3 px-6 py-3 bg-teal-700 text-white rounded-full text-[10px] font-black hover:bg-teal-800 transition-all shadow-md uppercase tracking-widest">
+                                                    <a href={getPdfPreviewUrl('sato-osougaku02.pdf')} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-3 bg-teal-700 text-white rounded-full text-[10px] font-black hover:bg-teal-800 transition-all shadow-md uppercase tracking-widest">
                                                         資料をプレビューする
                                                     </a>
                                                 </div>
