@@ -55,14 +55,11 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // GitHubのRaw URL（もっとも安定してGoogleアカウント確認を回避できる方式）
+        // GitHubのRaw URL（音声用）
         const BASE_ASSETS_URL = "https://raw.githubusercontent.com/yoshi0213saku-spec/my-images/main/";
         
-        // PDFをブラウザでプレビューさせるための関数
-        // Googleビューアー（docs.google.com）を使用せず、直接Raw URLを指定することでログインを回避
-        const getPdfPreviewUrl = (fileName) => {
-            return `${BASE_ASSETS_URL}${fileName}`;
-        };
+        // PDF表示用（jsDelivr経由でダウンロードを回避し、ブラウザのプレビューを起動）
+        const PDF_VIEW_BASE = "https://cdn.jsdelivr.net/gh/yoshi0213saku-spec/my-images@main/";
 
         function App() {
             const [visitorCount, setVisitorCount] = useState(0);
@@ -230,27 +227,34 @@
                                         </h4>
                                         <p className="text-lg md:text-xl font-serif font-black text-slate-900 ml-4">毎週火曜日 13:30 〜 15:30</p>
                                     </div>
+                                    
                                     <div>
                                         <h4 className="text-teal-700 font-black mb-5 uppercase text-[10px] tracking-[0.3em] flex items-center gap-2">
-                                            <span className="w-6 h-[2px] bg-teal-300"></span> 会場予定表
+                                            <span className="w-6 h-[2px] bg-teal-300"></span> 会場予定表 (2026年)
                                         </h4>
-                                        <a href={getPdfPreviewUrl('venue_schedule_2026.pdf')} target="_blank" rel="noopener noreferrer" className="ml-4 inline-flex items-center gap-4 px-6 py-3 bg-teal-700 rounded-xl text-white font-black hover:bg-teal-800 transition-all shadow-md group text-xs md:text-sm">
-                                            <svg className="h-5 w-5 text-teal-100 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                            <span>2026年 会場表（PDF）を表示</span>
-                                        </a>
+                                        <div className="ml-4">
+                                            <a href={`${PDF_VIEW_BASE}venue_schedule_2026.pdf`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-4 px-6 py-3 bg-teal-700 rounded-xl text-white font-black hover:bg-teal-800 transition-all shadow-md group text-xs md:text-sm">
+                                                <svg className="h-5 w-5 text-teal-100 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                                <span>会場予定表（PDF）を表示</span>
+                                            </a>
+                                            <p className="mt-3 text-[10px] text-slate-400 font-bold ml-1 tracking-wider uppercase italic">* Chrome等のブラウザで直接安全に表示されます</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h4 className="text-teal-700 font-black mb-2 uppercase text-[10px] tracking-[0.3em] flex items-center gap-2">
-                                            <span className="w-6 h-[2px] bg-teal-300"></span> 会場
-                                        </h4>
-                                        <p className="text-lg md:text-xl font-serif font-black text-slate-900 ml-4">東御市中央公民館（3階講堂他）</p>
-                                        <p className="text-base font-sans text-slate-800 font-black mt-3 ml-4 border-l-4 border-teal-100 pl-4 uppercase tracking-widest">TEL 0268 75 5506</p>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-teal-700 font-black mb-2 uppercase text-[10px] tracking-[0.3em] flex items-center gap-2">
-                                            <span className="w-6 h-[2px] bg-teal-300"></span> 会費
-                                        </h4>
-                                        <p className="text-lg md:text-xl font-serif font-black text-slate-900 ml-4">2,000円 <span className="text-sm font-bold opacity-60 font-sans ml-2">/ 月額</span></p>
+
+                                    <div className="grid md:grid-cols-2 gap-10 pt-4">
+                                        <div>
+                                            <h4 className="text-teal-700 font-black mb-2 uppercase text-[10px] tracking-[0.3em] flex items-center gap-2">
+                                                <span className="w-6 h-[2px] bg-teal-300"></span> 会場
+                                            </h4>
+                                            <p className="text-lg md:text-xl font-serif font-black text-slate-900 ml-4">東御市中央公民館（3階講堂他）</p>
+                                            <p className="text-base font-sans text-slate-800 font-black mt-3 ml-4 border-l-4 border-teal-100 pl-4 uppercase tracking-widest">TEL 0268 75 5506</p>
+                                        </div>
+                                        <div>
+                                            <h4 className="text-teal-700 font-black mb-2 uppercase text-[10px] tracking-[0.3em] flex items-center gap-2">
+                                                <span className="w-6 h-[2px] bg-teal-300"></span> 会費
+                                            </h4>
+                                            <p className="text-lg md:text-xl font-serif font-black text-slate-900 ml-4">2,000円 <span className="text-sm font-bold opacity-60 font-sans ml-2">/ 月額</span></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -301,7 +305,7 @@
                                             </div>
                                             
                                             {/* 2. AI Video Guide */}
-                                            <div className="grid md:grid-cols-2 gap-8">
+                                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                                                 <SimpleVideoBlock 
                                                     title="太極拳「心地よい力」のパラドックス" 
                                                     url="https://youtu.be/acOhVIgnBt4" 
@@ -316,29 +320,18 @@
                                                 />
                                             </div>
 
-                                            {/* 3. AI PDF Guide */}
-                                            <div className="space-y-6">
-                                                <div className="bg-slate-50/80 p-6 rounded-[2rem] border border-slate-200 shadow-sm transition-all hover:border-teal-200">
-                                                    <div className="mb-4 flex items-center gap-2">
-                                                        <div className="w-1.5 h-5 bg-teal-600 rounded-full"></div>
-                                                        <p className="font-black text-sm text-slate-900 uppercase tracking-widest font-serif text-[0.9em]">【AI PDFガイド】</p>
-                                                    </div>
-                                                    <p className="mb-8 text-slate-900 font-black font-serif text-base md:text-lg leading-relaxed text-[0.9em]">佐藤先生推手の資料 20240324</p>
-                                                    <a href={getPdfPreviewUrl('sato-suisyu02.pdf')} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-3 bg-teal-700 text-white rounded-full text-[10px] font-black hover:bg-teal-800 transition-all shadow-md uppercase tracking-widest">
-                                                        資料を閲覧する
-                                                    </a>
-                                                </div>
-
-                                                <div className="bg-slate-50/80 p-6 rounded-[2rem] border border-slate-200 shadow-sm transition-all hover:border-teal-200">
-                                                    <div className="mb-4 flex items-center gap-2">
-                                                        <div className="w-1.5 h-5 bg-teal-600 rounded-full"></div>
-                                                        <p className="font-black text-sm text-slate-900 uppercase tracking-widest font-serif text-[0.9em]">【AI PDFガイド】</p>
-                                                    </div>
-                                                    <p className="mb-8 text-slate-900 font-black font-serif text-base md:text-lg leading-relaxed text-[0.9em]">佐藤先生『王宗岳の太極拳論』20260304</p>
-                                                    <a href={getPdfPreviewUrl('sato-osougaku02.pdf')} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-3 bg-teal-700 text-white rounded-full text-[10px] font-black hover:bg-teal-800 transition-all shadow-md uppercase tracking-widest">
-                                                        資料を閲覧する
-                                                    </a>
-                                                </div>
+                                            {/* 3. AI PDF Guide - ボタンをコンパクトに維持 */}
+                                            <div className="grid md:grid-cols-2 gap-8 mt-4">
+                                                <PdfPreviewCard 
+                                                    title="【AI PDFガイド】" 
+                                                    subtitle="佐藤先生推手の資料 20240324" 
+                                                    fileName="sato-suisyu02.pdf" 
+                                                />
+                                                <PdfPreviewCard 
+                                                    title="【AI PDFガイド】" 
+                                                    subtitle="佐藤先生『王宗岳の太極拳論』20260304" 
+                                                    fileName="sato-osougaku02.pdf" 
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -378,13 +371,34 @@
                                     <span className="text-xl font-black font-serif uppercase tracking-[0.2em] text-slate-900">Tai Chi <span className="text-teal-700">Donguri</span></span>
                                 </div>
                                 <div className="hidden md:block w-px h-8 bg-slate-200"></div>
-                                <div className="text-[11px] font-mono text-slate-600 uppercase font-black tracking-[0.3em] bg-slate-50 px-6 py-2 rounded-full border border-slate-100 shadow-inner">
+                                <div className="text-[11px] font-mono text-slate-600 uppercase font-black tracking-[0.2em] bg-slate-50 px-6 py-2 rounded-full border border-slate-100 shadow-inner">
                                     Total Visitors: <span className="text-teal-700 font-bold">{visitorCount.toString().padStart(6, '0')}</span>
                                 </div>
                             </div>
                             <p className="text-[10px] tracking-[0.4em] text-slate-500 uppercase font-black">© 太極拳どんぐりの会 - Tomi-City, Nagano</p>
                         </div>
                     </footer>
+                </div>
+            );
+        }
+
+        // PDF閲覧用カードコンポーネント
+        function PdfPreviewCard({ title, subtitle, fileName }) {
+            const url = `https://cdn.jsdelivr.net/gh/yoshi0213saku-spec/my-images@main/${fileName}`;
+            return (
+                <div className="bg-slate-50/80 p-6 rounded-[2rem] border border-slate-200 shadow-sm transition-all hover:border-teal-200 text-left flex flex-col justify-between">
+                    <div>
+                        <div className="mb-4 flex items-center gap-2">
+                            <div className="w-1.5 h-5 bg-teal-600 rounded-full"></div>
+                            <p className="font-black text-sm text-slate-900 uppercase tracking-widest font-serif text-[0.9em]">{title}</p>
+                        </div>
+                        <p className="mb-8 text-slate-900 font-black font-serif text-base md:text-lg leading-relaxed text-[0.9em]">{subtitle}</p>
+                    </div>
+                    {/* PDF資料閲覧ボタンのみコンパクトサイズ px-4 py-2 */}
+                    <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 px-4 py-2 bg-teal-700 text-white rounded-full text-[10px] font-black hover:bg-teal-800 transition-all shadow-md uppercase tracking-widest w-full">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        資料を閲覧する
+                    </a>
                 </div>
             );
         }
@@ -402,15 +416,19 @@
             );
         }
 
+        // YouTube視聴ボタン
         function SimpleVideoBlock({ title, url }) {
             return (
-                <div className="bg-slate-50/80 p-6 rounded-[2rem] border border-slate-200 shadow-sm transition-all hover:border-red-200">
-                    <div className="mb-4 flex items-center gap-2">
-                        <div className="w-1.5 h-5 bg-red-600 rounded-full"></div>
-                        <p className="font-black text-sm text-slate-900 uppercase tracking-widest font-serif text-[0.9em]">【AI動画ガイド】</p>
+                <div className="bg-slate-50/80 p-6 rounded-[2rem] border border-slate-200 shadow-sm transition-all hover:border-red-200 flex flex-col justify-between">
+                    <div>
+                        <div className="mb-4 flex items-center gap-2">
+                            <div className="w-1.5 h-5 bg-red-600 rounded-full"></div>
+                            <p className="font-black text-sm text-slate-900 uppercase tracking-widest font-serif text-[0.9em]">【AI動画ガイド】</p>
+                        </div>
+                        <p className="mb-8 text-slate-900 font-black font-serif text-base md:text-lg leading-relaxed min-h-[3rem] text-[0.9em]">{title}</p>
                     </div>
-                    <p className="mb-8 text-slate-900 font-black font-serif text-base md:text-lg leading-relaxed min-h-[3rem] text-[0.9em]">{title}</p>
-                    <a href={url} target="_blank" className="inline-flex items-center gap-3 px-5 py-2.5 bg-red-600 text-white rounded-full text-[10px] font-black hover:bg-red-700 transition-all shadow-md uppercase tracking-widest">
+                    {/* YouTubeボタンのみコンパクトサイズ px-4 py-2 */}
+                    <a href={url} target="_blank" className="inline-flex items-center justify-center gap-3 px-4 py-2 bg-red-600 text-white rounded-full text-[10px] font-black hover:bg-red-700 transition-all shadow-md uppercase tracking-widest">
                         <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93 snowy-red-600.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                         YOUTUBEで視聴する
                     </a>
