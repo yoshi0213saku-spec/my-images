@@ -142,11 +142,12 @@
                     </div>
 
                     <main>
-                        {/* Notice Bar */}
+                        {/* Notice Bar - 文言を修正 */}
                         <div className="pt-[52px] bg-teal-50/50 border-b border-teal-100">
                             <div className="container mx-auto px-6 py-1.5 text-center">
                                 <p className="text-[10px] md:text-[11px] font-bold text-teal-800 tracking-wider">
-                                    このホームページは太極拳どんぐりの会及び道海会の会員に公開しています。
+                                    このホームページは、太極拳どんぐりの会・道海会の会員限定で公開しています。<br />
+                                    無断転記・転載・ダウンロードを禁止します。
                                 </p>
                             </div>
                         </div>
@@ -154,7 +155,7 @@
                         {/* Hero Section */}
                         <section className="hero-gradient min-h-[70vh] flex items-center pt-10 pb-10">
                             <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-8 items-center">
-                                {/* スマートフォンで画像がテキストより上に来るように order-1 を設定 */}
+                                {/* スマートフォンで画像が最上部に配置されるよう order-1 を適用 */}
                                 <div className="order-1 lg:order-2 relative mb-8 lg:mb-0">
                                     <div className="absolute -inset-3 bg-teal-100/40 rounded-[2rem] rotate-1"></div>
                                     <img src={`${BASE_ASSETS_URL}taichi_top02.png`} alt="練習風景" className="relative rounded-[1.5rem] shadow-xl border-2 border-white object-cover w-full" />
